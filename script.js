@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const dailyVideos = [
     {
         date: "14 AGUSTUS 2026",
-        video: "videos/14-agustus-2026.mp4",
+        video: "video",
         title: "Kabar aku hari ini ❤️",
         caption: "Hari ini aku mau cerita sesuatu..."
     },
