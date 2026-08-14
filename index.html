@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu, Yang Jauh Di Sana ❤️</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- FLOATING BACKGROUND PARTICLES -->
+    <div class="stars-container" id="starsContainer"></div>
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">RINA<span class="heart-icon">❤️</span>JULIO</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#cerita-kita" class="nav-link">Cerita Kita</a></li>
+                <li><a href="#kabar-hari-ini" class="nav-link">Kabar</a></li>
+                <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                <li><a href="#surat" class="nav-link">Surat</a></li>
+                <li><a href="#surprise" class="nav-link">Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle-top">A little place I made for you...</p>
+            <h1 class="hero-title">Halo, sayang. <span class="pulse-heart">❤️</span></h1>
+            <p class="hero-subtitle">Aku bikin tempat kecil ini khusus untuk kamu.</p>
+            <div class="hero-location-tag">
+                <span>Aceh</span>
+                <i class="fas fa-heart hero-mini-heart"></i>
+                <span>Jawa Timur</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <p>Scroll perlahan ya</p>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- SECTION 1: OPENING MESSAGE -->
+    <section class="opening-section" id="opening">
+        <div class="container text-center">
+            <p class="section-tag font-serif">Untuk kamu yang jauh disana...</p>
+            <div class="opening-text-block">
+                <p>Aku tahu sekarang kita sedang jauh.</p>
+                <p>Kamu disana dengan hari-harimu.</p>
+                <p>Aku disini dengan hari-hariku.</p>
+                <p>Dan mungkin kita nggak selalu bisa video call.</p>
+            </div>
+            <h2 class="opening-highlight">Tapi aku tetap ingin kamu tahu kabarku.</h2>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ACEH -> JAWA TIMUR (THE DISTANCE) -->
+    <section class="distance-section" id="distance">
+        <div class="container">
+            <div class="distance-wrapper">
+                <div class="location-card">
+                    <i class="fas fa-map-marker-alt location-icon"></i>
+                    <h3>ACEH</h3>
+                    <p>Tempat aku merindukanmu</p>
+                </div>
+
+                <div class="distance-line-container">
+                    <div class="heart-pulse-marker start">❤️</div>
+                    <div class="connecting-line"></div>
+                    <div class="heart-pulse-marker end">❤️</div>
+                </div>
+
+                <div class="location-card">
+                    <i class="fas fa-map-marker-alt location-icon"></i>
+                    <h3>JAKARTA</h3>
+                    <p>Tempat kamu berjuang</p>
+                </div>
+            </div>
+            <p class="distance-quote">"Jauh secara jarak, dekat dalam cerita."</p>
+        </div>
+    </section>
+
+<!-- SECTION 3: FOTO KITA (GALLERY) -->
+<section class="photo-section" id="galeri">
+    <div class="container">
+
+        <div class="section-header text-center">
+            <h2 class="section-title">Foto Kita</h2>
+            <p class="section-subtitle">
+                Momen manis yang selalu aku simpan
+            </p>
+        </div>
+
+        <!-- FOTO TERBAIK -->
+        <div class="featured-photo">
+            <div class="featured-label">
+                <span>❤️</span> Foto Terbaik Kita <span>❤️</span>
+            </div>
+
+            <div class="featured-polaroid">
+                <div class="polaroid-img-frame">
+                    <img 
+                        src="images/2 bawah.jpeg" 
+                        alt="Foto terbaik kita"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="polaroid-caption">
+                    <p>
+                        Salah satu foto terbaik kita
+                        <span class="heart-icon">❤️</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FOTO-FOTO LAINNYA -->
+        <div class="other-photos">
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/1.jpeg" alt="Momen kita 1" loading="lazy">
+                </div>
+                <p>Foto pas dipantai ❤️</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/3 bawah.jpeg" alt="Momen kita 2" loading="lazy">
+                </div>
+                <p>Pas kamu nyender sama aku rasanya nyaman banget 🤍</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/4.jpeg" alt="Momen kita 3" loading="lazy">
+                </div>
+                <p>Ini momen paling berjuang kita hahaha 💕</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/5.jpeg" alt="Momen kita 4" loading="lazy">
+                </div>
+                <p>Yang ini kayak prewedding. Aku suka banget 🥺</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/6.jpeg" alt="Momen kita 5" loading="lazy">
+                </div>
+                <p>Selalu jadi favorit ❤️</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/7.jpeg" alt="Momen kita 5" loading="lazy">
+                </div>
+                <p>Pengen keulang lagi momen ini ❤️</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/8.jpeg" alt="Momen kita 5" loading="lazy">
+                </div>
+                <p>Ini hadiah ulang tahun dari mu dan keluarga mu ❤️</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/9.jpeg" alt="Momen kita 5" loading="lazy">
+                </div>
+                <p>Senyuman kamu disini manis bangetttttttt ❤️</p>
+            </div>
+
+            <div class="mini-polaroid">
+                <div class="mini-img-frame">
+                    <img src="images/10.jpeg" alt="Momen kita 5" loading="lazy">
+                </div>
+                <p>Ini keren banget sihhhh ❤️</p>
+            </div>
+
+        </div>
+        
+    </div>
+</section>
+
+    <!-- SECTION 4: CERITA KITA (TIMELINE) -->
+    <section class="timeline-section" id="cerita-kita">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Cerita Kita</h2>
+                <p class="section-subtitle">Perjalanan indah yang terus berlanjut</p>
+            </div>
+            <div class="vertical-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content">
+                        <h3>Pertama Kenal</h3>
+                        <p>Pertama kenal kita sangat kelam dan banyak drama hahhaha. aku gak mau sebut tapi kamu ingat kan apa yang membuat kita pertama kali kenal. rasanya tu udh lama bangetttttt</p>
+                        <p>Dan satu hal yang paling aku ingat ialah, Kamu jadi salah satu pasien ku yang pali batu,keras kepala,gak mau dengar,ngambekan. Pokoknya paling ribet deh HAHAHAHAHA................</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content">
+                        <h3>Mulai Dekat</h3>
+                        <p>Awal mulai deket karena aku mau masuk psikologi dan kamu gak lewat wleeee. tapi gak papa mungkin itu sebuah keajaiban tuhan yang dimana jika kamu gak lewat psikologi tuhan memberikan yang terbaik, contoh nya sekarang kamu masuk ke pesantren al-fattah di temboro. Semoga dengan kamu masuk sana makin berubah dan ingat aku selalu yang menunggu kamu disini sampai kamu lulus. Aku bakal menepati janji ku untuk melamar dan menikahi mu</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content">
+                        <h3>Mulai Saling Sayang</h3>
+                        <p>Awal aku mulai merasa nyaman ketika kamu minta bantuan ke aku, kasih harapan dan lain lain, tapi tetap kamu gk ada perasaan ke aku huhftt, cuman sebatas teman sahaja. Tapi sekarang aku seneng bangettttt, aku udh jadi tunangan mu wleeee, aku sekarang yang memenangkan hati mu hehehehehe</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content">
+                        <h3>Menjadi Kita</h3>
+                        <p>Hari dimana kita jadian adalah AKU DI JEBAK DENGAN JEBAKAN MUUUU huhftt. Seorang ahli psikologi Forensik (AMINNNNN...) dijebak anjirrr, biasanya aku jebakin orang, ini malah aku yang dijebak huhftttt, tapi gak papa sihhh, dengan jebakan itu akhirnya aku bisa menunjukan sesungguhnya cinta ku padamu dan kamu juga bisa merasakan cinta ku wehehehehe, aku seneng bangettt ketemu kamuuu hahahaha</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">05</div>
+                    <div class="timeline-content">
+                        <h3>LDR Aceh ↔ Jawa Timur</h3>
+                        <p>Rasanya aku kayak campur aduk. Sedih, Senang, Bahagia, Takut pokoknya campur aduk dehhhhh. Sedih karena aku ditinggalin huhfttt. Tapi aku juga seneng kamu dapatkan apa yang kamu ingin kan selama ini. Bahagia jelas, cuman ya gitu ada takut nya. takutnya ketika aku nungguin kamu, kamu malah sama orang lain. Tapi tak pe, aku sedikit legah ketika kamu kemarin bilang udah punya tunangan hehehehehe, aku seneng banget moga kamu gak bohong, AWAS AJA KAMU BOHONG, GUWEH NUKLIR ITU TEMBORO </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">06</div>
+                    <div class="timeline-content">
+                        <h3>Sampai Nanti Kita Bertemu Lagi</h3>
+                        <p>Kita akan bertemu, pasti bertemu, tapi hal yang paling aku tunggu tunggu ialah meminang kamu dengan bismillah dan menikahi mu dengan izin allah. aku akan menepati janji itu, jujur aku setiap hari mimpi ketika kita nikah aku nangis bjirrrrrr. kayak gimana gitu ya kan wwkkwkwkwkk</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: TENTANG LDR -->
+    <section class="about-ldr-section">
+        <div class="container text-center">
+            <h2 class="section-title font-serif">Tentang jarak kita...</h2>
+            <div class="ldr-text-content">
+                <p>Sekarang memang ada jarak di antara kita.</p>
+                <p>Tapi aku nggak mau jarak itu membuat kamu merasa sendirian.</p>
+                <p>Makanya aku bikin tempat ini.</p>
+            </div>
+            <h3 class="ldr-highlight">"Kalau kamu kangen, buka web ini ya."</h3>
+        </div>
+    </section>
+
+<!-- SECTION 6: DAILY VIDEO JOURNAL -->
+<section class="video-section" id="kabar-hari-ini">
+    <div class="container">
+
+        <!-- Header Section -->
+        <div class="section-header text-center">
+            <span class="date-badge" id="todayDate">14 AGUSTUS 2026</span>
+
+            <h2 class="section-title">
+                Kabar Aku Hari Ini
+                <span class="heart-icon">❤️</span>
+            </h2>
+
+            <p class="video-quote" id="todayQuote">
+                "Hari ini aku mau cerita sesuatu..."
+            </p>
+        </div>
+
+        <!-- Video Hari Ini -->
+        <div class="video-card-frame">
+
+            <div class="video-wrapper">
+                <video
+                    id="dailyVideo"
+                    controls
+                    preload="metadata"
+                    poster="images/foto-kita.jpg"
+                >
+                    Browser kamu tidak mendukung pemutaran video ini.
+                </video>
+            </div>
+
+            <div class="video-card-footer">
+                <p class="video-tagline">
+                    Dari aku, untuk kamu. ❤️
+                </p>
+
+                <p class="video-subtext">
+                    Semoga setelah lihat ini kamu sedikit nggak terlalu kangen.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ARCHIVE VIDEO -->
+        <div class="video-archive">
+
+            <div class="archive-header text-center">
+                <span class="archive-small-title">
+                    DIGITAL DIARY
+                </span>
+
+                <h3 class="archive-title">
+                    Kabar Aku Sebelumnya
+                </h3>
+
+                <p class="archive-description">
+                    Kalau kamu kangen, kamu juga bisa lihat kabar-kabar aku
+                    dari hari sebelumnya. ❤️
+                </p>
+            </div>
+
+
+            <!-- Tempat video-video sebelumnya akan dibuat oleh JavaScript -->
+            <div
+                class="video-archive-grid"
+                id="videoArchive"
+            >
+                <!-- Video archive akan muncul di sini -->
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <!-- SECTION 7: PESAN KECIL (FLOATING NOTES) -->
+    <section class="notes-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Catatan Kecil</h2>
+                <p class="section-subtitle">Pengingat harian dari aku untuk kamu</p>
+            </div>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <i class="fas fa-utensils note-icon"></i>
+                    <p>Jangan lupa makan ya, sayang.</p>
+                </div>
+                <div class="note-card">
+                    <i class="fas fa-bed note-icon"></i>
+                    <p>Jangan terlalu capek, istirahat yang cukup.</p>
+                </div>
+                <div class="note-card">
+                    <i class="fas fa-comment-dots note-icon"></i>
+                    <p>Kalau sempat, kabarin aku ya.</p>
+                </div>
+                <div class="note-card">
+                    <i class="fas fa-clock note-icon"></i>
+                    <p>Aku selalu nunggu kabar kamu.</p>
+                </div>
+                <div class="note-card highlight-note">
+                    <i class="fas fa-heart note-icon"></i>
+                    <p>Aku sayang banget sama kamu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: WHATSAPP (GILIRAN KAMU) -->
+    <section class="whatsapp-section">
+        <div class="container text-center">
+            <h2 class="section-title">Sekarang giliran kamu <span class="heart-icon">❤️</span></h2>
+            <p class="wa-subtitle">Aku juga kangen kabar kamu.</p>
+            <p class="wa-subtext">Jangan cuma aku yang cerita...</p>
+            
+            <div class="wa-quote-box">
+                <p>"Aku juga kangen upload video kamu disini dongss 🥺😢"</p>
+            </div>
+
+            <p class="wa-instruction">Kalau mau kasih kabar, langsung chat aku ya.</p>
+
+            <a href="https://wa.me/6285119422086?text=Hai%20sayang,%20aku%20mau%20kasih%20kabar%20%E2%9D%A4%EF%B8%8F" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Kirim kabar ke aku 🥺❤️
+            </a>
+        </div>
+    </section>
+
+<!-- SECTION 9: LOVE LETTER (ENVELOPE) -->
+    <section class="letter-section" id="surat">
+        <div class="container text-center">
+            <div class="section-header">
+                <h2 class="section-title">Ada surat kecil buat kamu...</h2>
+                <p class="section-subtitle">Klik amplop di bawah ini untuk membukanya</p>
+            </div>
+
+            <!-- CONTAINER AMPLOP -->
+            <div class="envelope-wrapper" id="envelopeWrapper">
+                <div class="envelope" id="envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-pocket"></div>
+                    <div class="envelope-paper">
+                        <p class="paper-preview">Hai sayang... ❤️</p>
+                    </div>
+                    <div class="envelope-heart">❤️</div>
+                </div>
+            </div>
+
+            <!-- MODAL SURAT -->
+            <div class="letter-modal" id="letterModal">
+                <div class="letter-modal-overlay" id="modalOverlay"></div>
+                <div class="letter-modal-content">
+                    <button class="btn-close-modal" id="closeModal">&times;</button>
+                    <div class="letter-body">
+                        <h3 class="letter-heading">Hai sayang... ❤️</h3>
+                        <p>Terima kasih ya sudah bertahan sampai sejauh ini sama aku. Walaupun jarak Aceh ke jawa timur lebih tepatnya di temboro memisahkan kita, rasa sayang aku sama sekali nggak berkurang.</p>
+                        <p>Website sederhana ini aku buat khusus untuk kamu. Supaya kapanpun kamu merasa sepi, kangen, atau rindu, kamu punya tempat kecil untuk sekadar menyapa dan mendengar kabarku.</p>
+                        <p>Jaga kesehatan kamu di pondok ya. Fokus belajar dan ibadah. Aku akan selalu mendoakan dan menunggu hari dimana kita tidak perlu lagi terpisahkan oleh layar.</p>
+                        <p class="letter-signature">Dari seseorang yang selalu merindukanmu,<br><strong>Julio Ferdinan ❤️</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: COUNTDOWN -->
+    <section class="countdown-section">
+        <div class="container text-center">
+            <h2 class="section-title">Sampai Kita Ketemu Lagi <span class="heart-icon">❤️</span></h2>
+            <p class="section-subtitle">Menghitung hari menuju pertemuan kita</p>
+
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="timer-box">
+                    <span id="days">6</span>
+                    <label>TAHUN</label>
+                </div>
+            <div class="timer-box">
+                    <span id="days">10</span>
+                    <label>BULAN</label>
+                </div>
+                <div class="timer-box">
+                    <span id="days">2.521</span>
+                    <label>HARI</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: SURPRISE BUTTON & FULLSCREEN OVERLAY -->
+    <section class="surprise-section" id="surprise">
+        <div class="container text-center">
+            <p class="surprise-teaser">Jangan pergi dulu...</p>
+            <h3 class="surprise-heading">Ada satu hal lagi.</h3>
+            <button class="btn-surprise" id="btnSurprise">Buka Kejutan ✨</button>
+        </div>
+
+        <!-- FULLSCREEN SURPRISE OVERLAY -->
+        <div class="surprise-overlay" id="surpriseOverlay">
+            <div class="surprise-content">
+                <div class="surprise-text-step" id="step1">
+                    <p>Kalau suatu hari kamu merasa aku jauh...</p>
+                </div>
+                <div class="surprise-text-step" id="step2">
+                    <p>Ingat satu hal...</p>
+                </div>
+                <div class="surprise-text-step" id="step3">
+                    <p>Aku tetap disini.</p>
+                </div>
+                <div class="surprise-text-step" id="step4">
+                    <h2 class="surprise-final-text">Aku sayang kamu. <span class="heart-icon">❤️</span></h2>
+                </div>
+                <button class="btn-close-surprise" id="btnCloseSurprise">Kembali ke Rumah ❤️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 12: FINAL MESSAGE -->
+    <section class="final-message-section">
+        <div class="container text-center">
+            <div class="final-text-wrapper">
+                <h2 class="final-line">Sampai nanti jarak ini bukan lagi jarak.</h2>
+                <h3 class="final-line">Sampai kita bisa duduk berdua lagi.</h3>
+                <h3 class="final-line">Sampai kita nggak perlu lagi cuma saling lihat lewat layar.</h3>
+                <h1 class="final-highlight">Aku tunggu kamu. <span class="pulse-heart">❤️</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="footer-primary">Dibuat dengan <i class="fas fa-heart footer-heart"></i> dari Aceh untuk kamu yang sedang jauh di Jawa Timur.</p>
+            <p class="footer-secondary">Tempat kecil untuk menyimpan cerita kita.</p>
+            <p class="footer-copyright">&copy; <span id="currentYear"></span> Khusus untuk Halfa Rina Lisma. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
