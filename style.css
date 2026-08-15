@@ -1864,3 +1864,153 @@ section {
         font-size: 0.85rem;
     }
 }
+
+/* ================================
+   OPENING LOVE SCREEN
+================================ */
+
+.love-opening {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: linear-gradient(
+        135deg,
+        #fff5f7,
+        #ffe4eb,
+        #fff
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.love-opening.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.love-opening-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.love-opening-text {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+    color: #7d3b4c;
+    margin-bottom: 25px;
+}
+
+.big-love-button {
+    border: none;
+    background: transparent;
+    font-size: 100px;
+    cursor: pointer;
+
+    filter: drop-shadow(0 10px 20px rgba(180, 50, 80, 0.25));
+
+    animation: loveBeat 1.4s infinite;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.big-love-button:hover {
+    transform: scale(1.15);
+}
+
+.big-love-button:active {
+    transform: scale(0.9);
+}
+
+.love-opening-hint {
+    margin-top: 20px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+
+    color: #9b5969;
+
+    animation: hintFade 2s infinite;
+}
+
+@keyframes loveBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes hintFade {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* ================================
+   BUNGA / LOVE TERBANG
+================================ */
+
+.flower-container {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.floating-flower {
+    position: absolute;
+
+    font-size: 25px;
+
+    left: 50%;
+    top: 50%;
+
+    animation: flowerFly 2s ease-out forwards;
+}
+
+@keyframes flowerFly {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.3)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(1)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
