@@ -532,6 +532,86 @@ showTodayVideo();
 
 createVideoArchive();
 
+showTodayVideo();
+
+createVideoArchive();
+
+
+// =========================================
+// LOVE COUNTER
+// =========================================
+
+const relationshipStart = new Date("2026-04-17T00:00:00");
+
+function updateLoveCounter() {
+
+    const now = new Date();
+
+    let years = now.getFullYear() - relationshipStart.getFullYear();
+    let months = now.getMonth() - relationshipStart.getMonth();
+    let days = now.getDate() - relationshipStart.getDate();
+
+    if (days < 0) {
+        months--;
+
+        const previousMonth = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            0
+        );
+
+        days += previousMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    const totalDifference =
+        now.getTime() - relationshipStart.getTime();
+
+    const totalSeconds =
+        Math.floor(totalDifference / 1000);
+
+    const hours =
+        Math.floor(totalSeconds / 3600) % 24;
+
+    const minutes =
+        Math.floor(totalSeconds / 60) % 60;
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById("loveYears").textContent =
+        years;
+
+    document.getElementById("loveMonths").textContent =
+        months;
+
+    document.getElementById("loveDays").textContent =
+        days;
+
+    document.getElementById("loveHours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("loveMinutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("loveSeconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+updateLoveCounter();
+
+setInterval(updateLoveCounter, 1000);
+
+
+// =========================================
+// OPENING LOVE
+// =========================================
+
 const loveOpening = document.getElementById("loveOpening");
 const bigLoveButton = document.getElementById("bigLoveButton");
 const backgroundMusic = document.getElementById("backgroundMusic");
