@@ -2039,3 +2039,92 @@ section {
         opacity: 0;
     }
 }
+
+/* =========================================
+   LOVE COUNTER
+========================================= */
+
+.love-counter-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.love-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.counter-box {
+    min-width: 100px;
+    padding: 20px 15px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 30px rgba(150, 70, 90, 0.12);
+
+    backdrop-filter: blur(10px);
+
+    transition: transform 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-5px);
+}
+
+.counter-box span {
+    display: block;
+
+    font-family: "Playfair Display", serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+
+    color: #9b3f58;
+}
+
+.counter-box small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 0.75rem;
+
+    color: #8a6870;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.love-counter-caption {
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.3rem;
+    font-style: italic;
+
+    color: #8a4c5d;
+}
+
+@media (max-width: 600px) {
+
+    .love-counter {
+        gap: 10px;
+    }
+
+    .counter-box {
+        min-width: 85px;
+        padding: 15px 10px;
+    }
+
+    .counter-box span {
+        font-size: 1.7rem;
+    }
+
+    .counter-box small {
+        font-size: 0.65rem;
+    }
+}
