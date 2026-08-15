@@ -1,620 +1,2041 @@
 /* ==========================================================================
-   PREMIUM ROMANTIC LDR WEBSITE - SCRIPT.JS
+   RESET & BASE STYLES
    ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+:root {
+    /* Color Palette */
+    --bg-dark-wine: #120309;
+    --bg-burgundy: #2a0815;
+    --bg-card: rgba(42, 8, 21, 0.55);
+    --border-glass: rgba(255, 182, 193, 0.15);
+    
+    --text-primary: #fdfbf7;
+    --text-cream: #f4e8e1;
+    --text-muted: #cbb3be;
+    
+    --accent-dusty-rose: #d8839d;
+    --accent-soft-pink: #f3a6bb;
+    --accent-gold: #e2be72;
+    --accent-gold-glow: rgba(226, 190, 114, 0.3);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Transitions & Shadows */
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 25px rgba(216, 131, 157, 0.25);
+}
 
-    /* ----------------------------------------------------------------------
-       1. SET CURRENT YEAR IN FOOTER
-       ---------------------------------------------------------------------- */
-    const currentYearSpan = document.getElementById('currentYear');
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-dark-wine);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(60, 10, 30, 0.6) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(42, 8, 21, 0.8) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* Typography Utilities */
+h1, h2, h3, .font-serif {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Universal Heart Animation */
+.heart-icon, .pulse-heart {
+    color: var(--accent-soft-pink);
+    display: inline-block;
+}
+
+.pulse-heart {
+    animation: heartbeat 1.8s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+}
+
+/* Dynamic Background Particles Containers */
+.stars-container, .hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Section Shared Padding */
+section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-cream);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--transition-smooth);
+}
+
+.navbar.scrolled {
+    padding: 12px 0;
+    background: rgba(18, 3, 9, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-glass);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    color: var(--text-cream);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+    opacity: 0.8;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--accent-dusty-rose);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--accent-soft-pink);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+    background: radial-gradient(circle at center, rgba(65, 12, 35, 0.4) 0%, transparent 70%);
+}
+
+.hero-subtitle-top {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent-soft-pink);
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(243, 166, 187, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-cream);
+    font-weight: 300;
+    margin-bottom: 35px;
+}
+
+.hero-location-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    box-shadow: var(--shadow-glow);
+}
+
+.hero-mini-heart {
+    font-size: 0.7rem;
+    color: var(--accent-soft-pink);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    animation: bounceSlow 2.5s infinite;
+}
+
+@keyframes bounceSlow {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+}
+
+/* ==========================================================================
+   SECTION 1: OPENING MESSAGE
+   ========================================================================== */
+.opening-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(42, 8, 21, 0.3) 50%, transparent 100%);
+}
+
+.section-tag {
+    font-size: 1.6rem;
+    color: var(--accent-soft-pink);
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.opening-text-block {
+    font-size: 1.2rem;
+    color: var(--text-cream);
+    font-weight: 300;
+    margin-bottom: 35px;
+}
+
+.opening-text-block p {
+    margin-bottom: 12px;
+}
+
+.opening-highlight {
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    line-height: 1.4;
+    max-width: 750px;
+    margin: 0 auto;
+    text-shadow: var(--accent-gold-glow);
+}
+
+/* ==========================================================================
+   SECTION 2: ACEH -> JAKARTA (THE DISTANCE)
+   ========================================================================== */
+.distance-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 40px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-premium);
+}
+
+.location-card {
+    text-align: center;
+    flex: 1;
+}
+
+.location-icon {
+    font-size: 2rem;
+    color: var(--accent-dusty-rose);
+    margin-bottom: 12px;
+}
+
+.location-card h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.location-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.distance-line-container {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 15px;
+}
+
+.connecting-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-dusty-rose), var(--accent-gold), var(--accent-dusty-rose));
+    position: relative;
+    border-radius: 2px;
+}
+
+.heart-pulse-marker {
+    position: absolute;
+    font-size: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: moveHeart 3s infinite linear;
+}
+
+@keyframes moveHeart {
+    0% { left: 0%; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { left: 90%; opacity: 0; }
+}
+
+.distance-quote {
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-cream);
+}
+
+/* ==========================================================================
+   SECTION 3: FOTO KITA (POLAROID EDITORIAL STYLE)
+   ========================================================================== */
+.polaroid-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.polaroid-card {
+    background: #fdfbf7;
+    padding: 20px 20px 30px 20px;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    transform: rotate(-2deg);
+    transition: var(--transition-smooth);
+    max-width: 380px;
+    width: 100%;
+}
+
+.polaroid-card:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 25px 50px rgba(243, 166, 187, 0.3);
+}
+
+.polaroid-img-frame {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background: #111;
+}
+
+.polaroid-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(1.1);
+    transition: var(--transition-smooth);
+}
+
+.polaroid-card:hover .polaroid-img-frame img {
+    transform: scale(1.05);
+}
+
+.polaroid-caption {
+    margin-top: 20px;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: #2a0815;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   SECTION 4: CERITA KITA (TIMELINE)
+   ========================================================================== */
+.vertical-timeline {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-dusty-rose), var(--accent-gold), transparent);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-number {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--bg-burgundy);
+    border: 2px solid var(--accent-dusty-rose);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    z-index: 2;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-glow);
+}
+
+.timeline-content {
+    margin-left: 30px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 25px 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-premium);
+    flex-grow: 1;
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    color: var(--accent-soft-pink);
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    color: var(--text-cream);
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   SECTION 5: TENTANG LDR
+   ========================================================================== */
+.about-ldr-section {
+    background: radial-gradient(circle at center, rgba(42, 8, 21, 0.8) 0%, transparent 100%);
+}
+
+.ldr-text-content {
+    font-size: 1.2rem;
+    color: var(--text-cream);
+    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto 35px;
+}
+
+.ldr-text-content p {
+    margin-bottom: 12px;
+}
+
+.ldr-highlight {
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   SECTION 6: DAILY VIDEO JOURNAL
+   ========================================================================== */
+.date-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(226, 190, 114, 0.15);
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    border-radius: 30px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.video-quote {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--accent-soft-pink);
+    font-style: italic;
+}
+
+.video-card-frame {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-premium);
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.video-wrapper video {
+    width: 100%;
+    display: block;
+    max-height: 480px;
+    object-fit: cover;
+}
+
+.video-card-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.video-tagline {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.video-subtext {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Video Archive */
+.video-archive {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.archive-title {
+    font-size: 1.2rem;
+    color: var(--text-cream);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.archive-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: var(--text-cream);
+    letter-spacing: 1px;
+}
+
+.archive-item.active {
+    border-color: var(--accent-dusty-rose);
+    background: rgba(216, 131, 157, 0.1);
+    color: var(--accent-soft-pink);
+}
+
+.archive-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   SECTION 7: PESAN KECIL (FLOATING NOTES)
+   ========================================================================== */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.note-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-premium);
+}
+
+.note-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-dusty-rose);
+    box-shadow: var(--shadow-glow);
+}
+
+.note-icon {
+    font-size: 1.8rem;
+    color: var(--accent-dusty-rose);
+    margin-bottom: 15px;
+}
+
+.note-card p {
+    color: var(--text-cream);
+    font-size: 0.95rem;
+}
+
+.highlight-note {
+    background: linear-gradient(135deg, rgba(65, 12, 35, 0.8), rgba(42, 8, 21, 0.9));
+    border-color: var(--accent-gold);
+}
+
+.highlight-note .note-icon, .highlight-note p {
+    color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   SECTION 8: WHATSAPP (GILIRAN KAMU)
+   ========================================================================== */
+.whatsapp-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(42, 8, 21, 0.6) 100%);
+}
+
+.wa-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-cream);
+    margin-bottom: 5px;
+}
+
+.wa-subtext {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.wa-quote-box {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--accent-soft-pink);
+    border-radius: 0 12px 12px 0;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent-soft-pink);
+}
+
+.wa-instruction {
+    font-size: 1rem;
+    color: var(--text-cream);
+    margin-bottom: 25px;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    font-size: 1rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+}
+
+/* ==========================================================================
+   SECTION 9: LOVE LETTER (ENVELOPE & MODAL)
+   ========================================================================== */
+.envelope-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    cursor: pointer;
+    perspective: 1000px;
+    padding: 20px 0;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    background: #1e050f;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(216, 131, 157, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.05);
+}
+
+/* Penutup Amplop Atas */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid #2a0815;
+    transform-origin: top;
+    transition: transform 0.5s ease, z-index 0.5s ease;
+    z-index: 4;
+    pointer-events: none; /* Mencegah pembatasan klik */
+}
+
+/* Kantong Depan Amplop */
+.envelope-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid #240612;
+    border-right: 140px solid #240612;
+    border-bottom: 100px solid #2e0917;
+    border-radius: 0 0 8px 8px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Kertas Surat */
+.envelope-paper {
+    position: absolute;
+    width: 85%;
+    height: 75%;
+    background: #fdfbf7;
+    border-radius: 4px;
+    top: 12%;
+    left: 7.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.5s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.paper-preview {
+    font-family: var(--font-serif);
+    color: #2a0815;
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Stiker Hati */
+.envelope-heart {
+    position: absolute;
+    font-size: 1.8rem;
+    z-index: 5;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* EFEK ANIMASI SAAT DIKLIK (CLASS OPEN) */
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .envelope-paper {
+    transform: translateY(-60px);
+    z-index: 3;
+}
+
+.envelope.open .envelope-heart {
+    opacity: 0;
+}
+
+/* MODAL SURAT */
+.letter-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.letter-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.letter-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 2, 6, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.letter-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    background: #fdfbf7;
+    color: #2a0815;
+    padding: 35px 25px;
+    border-radius: 12px;
+    z-index: 2001;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    transform: translateY(30px);
+    transition: transform 0.4s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.letter-modal.active .letter-modal-content {
+    transform: translateY(0);
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: #2a0815;
+    cursor: pointer;
+}
+
+.letter-body {
+    text-align: left;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.letter-heading {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #2a0815;
+}
+
+.letter-body p {
+    margin-bottom: 12px;
+}
+
+.letter-signature {
+    margin-top: 25px;
+    text-align: right;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   SECTION 10: COUNTDOWN
+   ========================================================================== */
+.countdown-section {
+    padding: 60px 0;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.timer-box {
+    background: rgba(30, 5, 15, 0.7);
+    border: 1px solid var(--accent-dusty-rose, #d8839d);
+    border-radius: 12px;
+    padding: 20px 15px;
+    min-width: 110px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.timer-box:hover {
+    transform: translateY(-5px);
+}
+
+.timer-box span {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: monospace;
+}
+
+.timer-box label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    color: var(--accent-dusty-rose, #d8839d);
+    font-weight: 600;
+}
+
+/* Penyesuaian untuk layar HP */
+@media (max-width: 768px) {
+    .timer-box {
+        min-width: 90px;
+        padding: 15px 10px;
     }
 
-    /* ----------------------------------------------------------------------
-       2. NAVBAR SCROLL EFFECT & MOBILE MENU TOGGLE
-       ---------------------------------------------------------------------- */
-    const navbar = document.getElementById('navbar');
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Sticky Navbar with Blur on Scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Mobile Hamburger Toggle
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            }
-        });
-
-        // Close Mobile Menu on Link Click
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
-            });
-        });
+    .timer-box span {
+        font-size: 1.6rem;
     }
 
-    /* ----------------------------------------------------------------------
-       3. FLOATING BACKGROUND PARTICLES (STARS & HEARTS)
-       ---------------------------------------------------------------------- */
-    const starsContainer = document.getElementById('starsContainer');
+    .timer-box label {
+        font-size: 0.65rem;
+    }
+}
 
-    function createParticle() {
-        if (!starsContainer) return;
+/* ==========================================================================
+   SECTION 11: SURPRISE BUTTON & FULLSCREEN OVERLAY
+   ========================================================================== */
+.surprise-teaser {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--accent-soft-pink);
+    font-style: italic;
+    margin-bottom: 5px;
+}
 
-        const particle = document.createElement('div');
-        const isHeart = Math.random() > 0.7; // 30% chance to spawn a heart
-        
-        particle.style.position = 'absolute';
-        particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.top = Math.random() * 100 + 'vh';
-        particle.style.opacity = (Math.random() * 0.5 + 0.2).toString();
-        particle.style.pointerEvents = 'none';
+.surprise-heading {
+    font-size: 1.8rem;
+    color: var(--text-cream);
+    margin-bottom: 25px;
+}
 
-        if (isHeart) {
-            particle.innerHTML = '❤️';
-            particle.style.fontSize = (Math.random() * 10 + 8) + 'px';
-            particle.style.animation = `floatUp ${Math.random() * 6 + 4}s linear infinite`;
-        } else {
-            particle.style.width = (Math.random() * 3 + 1) + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.backgroundColor = '#f3a6bb';
-            particle.style.borderRadius = '50%';
-            particle.style.animation = `twinkle ${Math.random() * 3 + 2}s ease-in-out infinite alternate`;
-        }
+.btn-surprise {
+    padding: 15px 35px;
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
 
-        starsContainer.appendChild(particle);
+.btn-surprise:hover {
+    background: var(--accent-gold);
+    color: var(--bg-dark-wine);
+    box-shadow: 0 0 25px var(--accent-gold-glow);
+}
 
-        // Limit total particles to maintain smooth performance
-        if (starsContainer.children.length > 40) {
-            starsContainer.removeChild(starsContainer.firstChild);
-        }
+/* Overlay Surprise */
+.surprise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 3, 9, 0.96);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+}
+
+.surprise-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.surprise-content {
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+.surprise-text-step {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--text-cream);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.surprise-text-step.visible {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+.surprise-final-text {
+    font-size: 3.2rem;
+    color: var(--accent-gold);
+    text-shadow: var(--accent-gold-glow);
+}
+
+.btn-close-surprise {
+    margin-top: 40px;
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-cream);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.btn-close-surprise.visible {
+    opacity: 1;
+}
+
+.btn-close-surprise:hover {
+    border-color: var(--accent-soft-pink);
+    color: var(--accent-soft-pink);
+}
+
+/* ==========================================================================
+   SECTION 12: FINAL MESSAGE & FOOTER
+   ========================================================================== */
+.final-message-section {
+    padding: 120px 0;
+    background: radial-gradient(circle at center, rgba(65, 12, 35, 0.5) 0%, transparent 70%);
+}
+
+.final-line {
+    font-size: 1.8rem;
+    color: var(--text-cream);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.final-highlight {
+    font-size: 3.2rem;
+    color: var(--accent-gold);
+    margin-top: 30px;
+    text-shadow: var(--accent-gold-glow);
+}
+
+/* Footer */
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-glass);
+    background: rgba(10, 2, 6, 0.9);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.footer-primary {
+    color: var(--text-cream);
+    margin-bottom: 5px;
+}
+
+.footer-heart {
+    color: var(--accent-soft-pink);
+}
+
+.footer-secondary {
+    font-style: italic;
+    font-family: var(--font-serif);
+    margin-bottom: 15px;
+}
+
+.footer-copyright {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    section {
+        padding: 70px 0;
     }
 
-    // Dynamic Keyframe Animations Injection
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-        @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 0.8; transform: scale(1.2); }
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.6; }
-            100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(styleSheet);
-
-    // Generate Initial Particles
-    for (let i = 0; i < 30; i++) {
-        createParticle();
+    /* Navbar Mobile */
+    .menu-toggle {
+        display: block;
     }
 
-   /* ----------------------------------------------------------------------
-       4. LOVE LETTER MODAL (FIXED CLICK & ANIMATION)
-       ---------------------------------------------------------------------- */
-    const envelopeWrapper = document.getElementById('envelopeWrapper');
-    const envelope = document.getElementById('envelope');
-    const letterModal = document.getElementById('letterModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const modalOverlay = document.getElementById('modalOverlay');
-
-    if (envelopeWrapper && envelope && letterModal) {
-        // Klik pada area amplop
-        envelopeWrapper.addEventListener('click', () => {
-            // 1. Jalankan animasi buka amplop & kertas terangkat
-            envelope.classList.add('open');
-
-            // 2. Tampilkan surat lengkap setelah 0.7 detik animasi selesai
-            setTimeout(() => {
-                letterModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }, 700);
-        });
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: rgba(18, 3, 9, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transition: var(--transition-smooth);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
 
-    function closeLetterModal() {
-        if (letterModal && envelope) {
-            letterModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-
-            // Reset kondisi amplop kembali tertutup
-            setTimeout(() => {
-                envelope.classList.remove('open');
-            }, 400);
-        }
+    .nav-menu.active {
+        right: 0;
     }
 
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeLetterModal);
+    /* Hero Responsive */
+    .hero-title {
+        font-size: 2.8rem;
     }
 
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeLetterModal);
+    /* Distance Section Mobile */
+    .distance-wrapper {
+        flex-direction: column;
+        gap: 25px;
     }
 
-    /* ----------------------------------------------------------------------
-       5. COUNTDOWN TIMER LOGIC
-       ---------------------------------------------------------------------- */
-    // Silakan sesuaikan tanggal target pertemuan kamu di sini (Format: YYYY-MM-DDTHH:MM:SS)
-    const targetMeetDate = new Date('2026-12-31T00:00:00').getTime();
-
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const difference = targetMeetDate - now;
-
-        if (difference > 0) {
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days;
-            if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-            if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-            if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
-        } else {
-            // Jika tanggal target sudah lewat
-            if (daysEl) daysEl.textContent = '00';
-            if (hoursEl) hoursEl.textContent = '00';
-            if (minutesEl) minutesEl.textContent = '00';
-            if (secondsEl) secondsEl.textContent = '00';
-        }
+    .distance-line-container {
+        width: 100%;
+        height: 50px;
+        justify-content: center;
     }
 
-    // Run Countdown every second
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    /* ----------------------------------------------------------------------
-       6. FULLSCREEN SURPRISE OVERLAY LOGIC
-       ---------------------------------------------------------------------- */
-    const btnSurprise = document.getElementById('btnSurprise');
-    const surpriseOverlay = document.getElementById('surpriseOverlay');
-    const btnCloseSurprise = document.getElementById('btnCloseSurprise');
-
-    const step1 = document.getElementById('step1');
-    const step2 = document.getElementById('step2');
-    const step3 = document.getElementById('step3');
-    const step4 = document.getElementById('step4');
-
-    if (btnSurprise && surpriseOverlay) {
-        btnSurprise.addEventListener('click', () => {
-            surpriseOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            // Sequential Text Reveal Sequence
-            setTimeout(() => { if (step1) step1.classList.add('visible'); }, 500);
-            setTimeout(() => { if (step2) step2.classList.add('visible'); }, 2200);
-            setTimeout(() => { if (step3) step3.classList.add('visible'); }, 3800);
-            setTimeout(() => { if (step4) step4.classList.add('visible'); }, 5400);
-            setTimeout(() => { if (btnCloseSurprise) btnCloseSurprise.classList.add('visible'); }, 7000);
-        });
+    .connecting-line {
+        width: 2px;
+        height: 100%;
     }
 
-    if (btnCloseSurprise && surpriseOverlay) {
-        btnCloseSurprise.addEventListener('click', () => {
-            surpriseOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-
-            // Reset Surprise steps for future clicks
-            [step1, step2, step3, step4, btnCloseSurprise].forEach(el => {
-                if (el) el.classList.remove('visible');
-            });
-        });
+    @keyframes moveHeart {
+        0% { top: 0%; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { top: 90%; opacity: 0; }
     }
 
-    /* ----------------------------------------------------------------------
-       7. SMOOTH SCROLL REVEAL (SIMPLE OBSERVER)
-       ---------------------------------------------------------------------- */
-    const observerOptions = {
-        threshold: 0.15
-    };
+    .heart-pulse-marker {
+        left: 50% !important;
+        transform: translateX(-50%);
+    }
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    /* Timeline Mobile */
+    .vertical-timeline::before {
+        left: 25px;
+    }
 
-    // Apply scroll reveal to section titles and cards
-    const elementsToReveal = document.querySelectorAll('.section-title, .note-card, .timeline-item, .polaroid-card');
-    elementsToReveal.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(25px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-        revealObserver.observe(el);
-    });
+    .timeline-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
 
-});
+    .timeline-content {
+        margin-left: 15px;
+        padding: 18px 20px;
+    }
+
+    /* Countdown Mobile */
+    .timer-box {
+        min-width: 75px;
+        padding: 15px 12px;
+    }
+
+    .timer-box span {
+        font-size: 2rem;
+    }
+
+    /* Surprise Overlay Mobile */
+    .surprise-text-step {
+        font-size: 1.6rem;
+    }
+
+    .surprise-final-text {
+        font-size: 2.2rem;
+    }
+}
+
+/* =========================================
+   FOTO KITA
+========================================= */
+
+.photo-section {
+    padding: 100px 20px;
+}
+
+/* FOTO TERBAIK */
+.featured-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.featured-label {
+    font-size: 15px;
+    color: #b76e79;
+    font-weight: 600;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+}
+
+.featured-label span {
+    margin-right: 5px;
+}
+
+.featured-polaroid {
+    width: min(500px, 90vw);
+    background: #fff;
+    padding: 18px 18px 25px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transform: rotate(-1deg);
+    transition: all 0.4s ease;
+}
+
+.featured-polaroid:hover {
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+}
+
+.polaroid-img-frame {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.polaroid-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.polaroid-caption {
+    text-align: center;
+    padding-top: 18px;
+}
+
+.polaroid-caption p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+
+/* =========================================
+   FOTO-FOTO KECIL
+========================================= */
+
+.other-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.mini-polaroid {
+    background: #fff;
+    padding: 12px 12px 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    transition: all 0.35s ease;
+}
+
+.mini-polaroid:nth-child(1) {
+    transform: rotate(-2deg);
+}
+
+.mini-polaroid:nth-child(2) {
+    transform: rotate(1.5deg);
+}
+
+.mini-polaroid:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.mini-polaroid:nth-child(4) {
+    transform: rotate(2deg);
+}
+
+.mini-polaroid:nth-child(5) {
+    transform: rotate(-1.5deg);
+}
+
+.mini-polaroid:hover {
+    transform: rotate(0deg) translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
+}
+
+.mini-img-frame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.mini-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mini-polaroid p {
+    text-align: center;
+    margin: 12px 3px 0;
+    font-size: 13px;
+    color: #666;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .photo-section {
+        padding: 70px 15px;
+    }
+
+    .featured-polaroid {
+        width: 88vw;
+        padding: 12px 12px 20px;
+    }
+
+    .featured-photo {
+        margin-top: 35px;
+        margin-bottom: 50px;
+    }
+
+    .other-photos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .mini-polaroid {
+        padding: 9px 9px 15px;
+    }
+
+    .mini-polaroid p {
+        font-size: 12px;
+    }
+}
+
+
+/* HP KECIL */
+@media (max-width: 480px) {
+
+    .other-photos {
+        gap: 15px;
+    }
+
+    .featured-label {
+        font-size: 14px;
+    }
+
+    .polaroid-caption p {
+        font-size: 14px;
+    }
+}
 
 /* =========================================================
    DAILY VIDEO JOURNAL
    ========================================================= */
 
-/*
-    DAFTAR VIDEO
+/* Video Section */
+.video-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+}
 
-    Cara menambahkan video baru:
-    1. Masukkan video ke folder "videos"
-    2. Tambahkan data video di bagian paling atas daftar ini
+/* Header Video */
+.video-section .section-header {
+    margin-bottom: 45px;
+}
 
-    Contoh:
-    {
-        date: "15 AGUSTUS 2026",
-        video: "videos/15-agustus-2026.mp4",
-        title: "Kabar aku hari ini ❤️",
-        caption: "Hari ini aku mau cerita sesuatu..."
-    }
-*/
+.date-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
-const dailyVideos = [
-    {
-        date: "15 AGUSTUS 2026",
-        video: "videos/15-agustus-2026.mp4",
-        title: "Kabar aku hari ini ❤️",
-        caption: "Hari ini aku mau cerita sesuatu..."
-    },
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
 
-    {
-        date: "14 AGUSTUS 2026",
-        video: "videos/14-agustus-2026.mp4",
-        title: "Kabar aku kemarin ❤️",
-        caption: "Sedikit cerita dari aku untuk kamu."
-    },
-
-    {
-        date: "12 AGUSTUS 2026",
-        video: "videos/12-agustus-2026.mp4",
-        title: "Kabar aku ❤️",
-        caption: "Semoga kamu suka lihat video ini."
-    },
-
-    {
-        date: "11 AGUSTUS 2026",
-        video: "videos/11-agustus-2026.mp4",
-        title: "Kabar aku ❤️",
-        caption: "Walaupun jauh, aku tetap mau kasih kabar."
-    }
-];
-
-
-/* =========================================================
-   ELEMENT HTML
-   ========================================================= */
-
-const dailyVideoElement = document.getElementById("dailyVideo");
-const todayDateElement = document.getElementById("todayDate");
-const todayQuoteElement = document.getElementById("todayQuote");
-const videoArchiveElement = document.getElementById("videoArchive");
-
-
-/* =========================================================
-   MENAMPILKAN VIDEO HARI INI
-   ========================================================= */
-
-function showTodayVideo() {
-
-    if (!dailyVideoElement || dailyVideos.length === 0) {
-        return;
-    }
-
-    const todayVideo = dailyVideos[0];
-
-    /* Mengubah tanggal */
-    if (todayDateElement) {
-        todayDateElement.textContent = todayVideo.date;
-    }
-
-    /* Mengubah quote */
-    if (todayQuoteElement) {
-        todayQuoteElement.textContent = `"${todayVideo.caption}"`;
-    }
-
-    /*
-        Mengubah sumber video.
-
-        Karena video dibuat menggunakan JavaScript,
-        kita tidak perlu lagi menulis <source>
-        satu per satu di HTML.
-    */
-
-    dailyVideoElement.src = todayVideo.video;
-
-    dailyVideoElement.load();
+.video-quote {
+    max-width: 600px;
+    margin: 15px auto 0;
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.7;
 }
 
 
 /* =========================================================
-   MEMBUAT VIDEO ARCHIVE
+   VIDEO HARI INI
    ========================================================= */
 
-function createVideoArchive() {
+.video-card-frame {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 
-    if (!videoArchiveElement) {
-        return;
-    }
+    overflow: hidden;
 
-    /*
-        Hapus isi archive sebelumnya
-        agar tidak terjadi duplikasi.
-    */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
 
-    videoArchiveElement.innerHTML = "";
+    background: rgba(255, 255, 255, 0.055);
 
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.3);
 
-    /*
-        Kalau hanya ada satu video,
-        berarti belum ada video sebelumnya.
-    */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    if (dailyVideos.length <= 1) {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
 
-        const emptyMessage = document.createElement("div");
+.video-card-frame:hover {
+    transform: translateY(-5px);
 
-        emptyMessage.className = "video-archive-empty";
-
-        emptyMessage.innerHTML = `
-            <p>
-                Belum ada kabar sebelumnya.
-                <br>
-                Tunggu ya sayang, nanti aku upload lagi ❤️
-            </p>
-        `;
-
-        videoArchiveElement.appendChild(emptyMessage);
-
-        return;
-    }
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.4);
+}
 
 
-    /*
-        Mulai dari index 1.
+/* Video Player */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
 
-        Index 0 = video hari ini.
+    overflow: hidden;
 
-        Index 1 dan seterusnya =
-        video-video sebelumnya.
-    */
+    background: #080808;
+}
 
-    for (let i = 1; i < dailyVideos.length; i++) {
+.video-wrapper video {
+    display: block;
 
-        const videoData = dailyVideos[i];
+    width: 100%;
+    height: 100%;
 
-        const card = createVideoCard(videoData);
+    object-fit: cover;
 
-        videoArchiveElement.appendChild(card);
-    }
+    background: #080808;
+}
+
+
+/* Footer Video */
+.video-card-footer {
+    padding: 25px 30px 30px;
+
+    text-align: center;
+}
+
+.video-tagline {
+    margin: 0 0 8px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.video-subtext {
+    margin: 0;
+
+    font-size: 0.9rem;
+    line-height: 1.7;
+
+    opacity: 0.65;
 }
 
 
 /* =========================================================
-   MEMBUAT CARD VIDEO
+   VIDEO ARCHIVE
    ========================================================= */
 
-function createVideoCard(videoData) {
+.video-archive {
+    margin-top: 90px;
+}
 
-    /* Card utama */
-    const card = document.createElement("article");
+.archive-header {
+    max-width: 650px;
+    margin: 0 auto 40px;
+}
 
-    card.className = "video-archive-card";
+.archive-small-title {
+    display: inline-block;
 
+    margin-bottom: 10px;
 
-    /* Wrapper video */
-    const videoWrapper = document.createElement("div");
+    font-size: 0.7rem;
+    font-weight: 700;
 
-    videoWrapper.className = "archive-video-wrapper";
+    letter-spacing: 3px;
 
+    opacity: 0.55;
+}
 
-    /* Video */
-    const video = document.createElement("video");
+.archive-title {
+    margin: 0;
 
-    video.controls = true;
-    video.preload = "metadata";
+    font-family: "Playfair Display", serif;
 
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+}
 
-    /*
-        Sumber video diambil dari data
-        yang kita tulis di dailyVideos.
-    */
+.archive-description {
+    max-width: 520px;
 
-    video.src = videoData.video;
+    margin: 15px auto 0;
 
+    font-size: 0.95rem;
+    line-height: 1.8;
 
-    /* Tambahkan video ke wrapper */
-    videoWrapper.appendChild(video);
-
-
-    /* Informasi video */
-    const info = document.createElement("div");
-
-    info.className = "video-archive-info";
-
-
-    /* Tanggal */
-    const date = document.createElement("span");
-
-    date.className = "archive-date";
-
-    date.textContent = videoData.date;
+    opacity: 0.65;
+}
 
 
-    /* Judul */
-    const title = document.createElement("h4");
+/* Grid Archive */
+.video-archive-grid {
+    display: grid;
 
-    title.className = "archive-video-title";
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-    title.textContent = videoData.title;
+    gap: 22px;
 
-
-    /* Caption */
-    const caption = document.createElement("p");
-
-    caption.className = "archive-video-caption";
-
-    caption.textContent = videoData.caption;
-
-
-    /* Action */
-    const actions = document.createElement("div");
-
-    actions.className = "archive-actions";
-
-
-    /* Download Button */
-    const downloadButton = document.createElement("a");
-
-    downloadButton.className = "archive-download-button";
-
-    downloadButton.href = videoData.video;
-
-    downloadButton.download = "";
-
-
-    /*
-        Teks tombol download
-    */
-
-    downloadButton.textContent = "⬇️ Download";
-
-
-    /* Masukkan action */
-    actions.appendChild(downloadButton);
-
-
-    /* Masukkan informasi */
-    info.appendChild(date);
-    info.appendChild(title);
-    info.appendChild(caption);
-    info.appendChild(actions);
-
-
-    /* Masukkan semuanya ke card */
-    card.appendChild(videoWrapper);
-    card.appendChild(info);
-
-
-    return card;
+    width: 100%;
 }
 
 
 /* =========================================================
-   JALANKAN WEBSITE
+   ARCHIVE CARD
    ========================================================= */
 
-showTodayVideo();
+.video-archive-card {
+    overflow: hidden;
 
-createVideoArchive();
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
 
-const loveOpening = document.getElementById("loveOpening");
-const bigLoveButton = document.getElementById("bigLoveButton");
-const backgroundMusic = document.getElementById("backgroundMusic");
-const flowerContainer = document.getElementById("flowerContainer");
+    background: rgba(255, 255, 255, 0.045);
 
-bigLoveButton.addEventListener("click", () => {
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.2);
 
-    // =========================
-    // PUTAR MUSIK
-    // =========================
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
 
-    backgroundMusic.volume = 0.5;
+.video-archive-card:hover {
+    transform: translateY(-7px);
 
-    backgroundMusic.play().catch(error => {
-        console.log("Musik tidak dapat diputar:", error);
-    });
+    border-color: rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
+}
 
 
-    // =========================
-    // BUNGA / LOVE BERHAMBURAN
-    // =========================
+/* Archive Video */
+.archive-video-wrapper {
+    position: relative;
 
-    const flowers = [
-        "🌸",
-        "🌷",
-        "🌹",
-        "💐",
-        "🌺",
-        "❤️",
-        "💕",
-        "✨"
-    ];
+    width: 100%;
 
-    for (let i = 0; i < 35; i++) {
+    aspect-ratio: 16 / 10;
 
-        const flower = document.createElement("span");
+    overflow: hidden;
 
-        flower.className = "floating-flower";
+    background: #080808;
+}
 
-        flower.textContent =
-            flowers[Math.floor(Math.random() * flowers.length)];
+.archive-video-wrapper video {
+    display: block;
 
-        const x =
-            (Math.random() - 0.5) * 1000;
+    width: 100%;
+    height: 100%;
 
-        const y =
-            (Math.random() - 0.5) * 800;
+    object-fit: cover;
 
-        flower.style.setProperty(
-            "--x",
-            `${x}px`
-        );
+    background: #080808;
+}
 
-        flower.style.setProperty(
-            "--y",
-            `${y}px`
-        );
 
-        flower.style.fontSize =
-            `${18 + Math.random() * 25}px`;
+/* Archive Information */
+.video-archive-info {
+    padding: 18px 18px 20px;
+}
 
-        flower.style.animationDelay =
-            `${Math.random() * 0.3}s`;
+.archive-date {
+    display: block;
 
-        flowerContainer.appendChild(flower);
+    margin-bottom: 6px;
 
-        setTimeout(() => {
-            flower.remove();
-        }, 2500);
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.55;
+}
+
+.archive-video-title {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.archive-video-caption {
+    margin: 8px 0 0;
+
+    font-size: 0.82rem;
+    line-height: 1.6;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+   ========================================================= */
+
+.archive-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.archive-download-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 8px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: inherit;
+
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.archive-download-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================================
+   EMPTY ARCHIVE
+   ========================================================= */
+
+.video-archive-empty {
+    grid-column: 1 / -1;
+
+    padding: 50px 25px;
+
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.video-archive-empty p {
+    margin: 0;
+
+    font-size: 0.9rem;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   RESPONSIVE VIDEO
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .video-section {
+        padding: 80px 0;
     }
 
+    .video-archive-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
 
-    // =========================
-    // HILANGKAN OPENING
-    // =========================
 
-    setTimeout(() => {
+@media (max-width: 600px) {
 
-        loveOpening.classList.add("hide");
+    .video-section {
+        padding: 70px 0;
+    }
 
-    }, 1200);
+    .video-card-frame {
+        border-radius: 20px;
+    }
 
-});
+    .video-card-footer {
+        padding: 20px;
+    }
+
+    .video-tagline {
+        font-size: 1.1rem;
+    }
+
+    .video-subtext {
+        font-size: 0.82rem;
+    }
+
+    .video-archive {
+        margin-top: 65px;
+    }
+
+    .video-archive-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .video-archive-card {
+        border-radius: 18px;
+    }
+
+    .archive-video-title {
+        font-size: 1rem;
+    }
+
+    .archive-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* ================================
+   OPENING LOVE SCREEN
+================================ */
+
+.love-opening {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: linear-gradient(
+        135deg,
+        #fff5f7,
+        #ffe4eb,
+        #fff
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.love-opening.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.love-opening-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.love-opening-text {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+    color: #7d3b4c;
+    margin-bottom: 25px;
+}
+
+.big-love-button {
+    border: none;
+    background: transparent;
+    font-size: 100px;
+    cursor: pointer;
+
+    filter: drop-shadow(0 10px 20px rgba(180, 50, 80, 0.25));
+
+    animation: loveBeat 1.4s infinite;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.big-love-button:hover {
+    transform: scale(1.15);
+}
+
+.big-love-button:active {
+    transform: scale(0.9);
+}
+
+.love-opening-hint {
+    margin-top: 20px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+
+    color: #9b5969;
+
+    animation: hintFade 2s infinite;
+}
+
+@keyframes loveBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes hintFade {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* ================================
+   BUNGA / LOVE TERBANG
+================================ */
+
+.flower-container {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.floating-flower {
+    position: absolute;
+
+    font-size: 25px;
+
+    left: 50%;
+    top: 50%;
+
+    animation: flowerFly 2s ease-out forwards;
+}
+
+@keyframes flowerFly {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.3)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(1)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
