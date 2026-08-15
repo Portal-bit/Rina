@@ -534,3 +534,87 @@ function createVideoCard(videoData) {
 showTodayVideo();
 
 createVideoArchive();
+
+const loveOpening = document.getElementById("loveOpening");
+const bigLoveButton = document.getElementById("bigLoveButton");
+const backgroundMusic = document.getElementById("backgroundMusic");
+const flowerContainer = document.getElementById("flowerContainer");
+
+bigLoveButton.addEventListener("click", () => {
+
+    // =========================
+    // PUTAR MUSIK
+    // =========================
+
+    backgroundMusic.volume = 0.5;
+
+    backgroundMusic.play().catch(error => {
+        console.log("Musik tidak dapat diputar:", error);
+    });
+
+
+    // =========================
+    // BUNGA / LOVE BERHAMBURAN
+    // =========================
+
+    const flowers = [
+        "🌸",
+        "🌷",
+        "🌹",
+        "💐",
+        "🌺",
+        "❤️",
+        "💕",
+        "✨"
+    ];
+
+    for (let i = 0; i < 35; i++) {
+
+        const flower = document.createElement("span");
+
+        flower.className = "floating-flower";
+
+        flower.textContent =
+            flowers[Math.floor(Math.random() * flowers.length)];
+
+        const x =
+            (Math.random() - 0.5) * 1000;
+
+        const y =
+            (Math.random() - 0.5) * 800;
+
+        flower.style.setProperty(
+            "--x",
+            `${x}px`
+        );
+
+        flower.style.setProperty(
+            "--y",
+            `${y}px`
+        );
+
+        flower.style.fontSize =
+            `${18 + Math.random() * 25}px`;
+
+        flower.style.animationDelay =
+            `${Math.random() * 0.3}s`;
+
+        flowerContainer.appendChild(flower);
+
+        setTimeout(() => {
+            flower.remove();
+        }, 2500);
+    }
+
+
+    // =========================
+    // HILANGKAN OPENING
+    // =========================
+
+    setTimeout(() => {
+
+        loveOpening.classList.add("hide");
+
+    }, 1200);
+
+});
