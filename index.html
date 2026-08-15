@@ -15,6 +15,30 @@
 </head>
 <body>
 
+<!-- OPENING LOVE SCREEN -->
+<div class="love-opening" id="loveOpening">
+
+    <div class="love-opening-content">
+
+        <p class="love-opening-text">
+            Ada sesuatu buat kamu...
+        </p>
+
+        <button class="big-love-button" id="bigLoveButton">
+            ❤️
+        </button>
+
+        <p class="love-opening-hint">
+            Tekan love ini ya ❤️
+        </p>
+
+    </div>
+
+    <!-- TEMPAT BUNGA/LOVE BERHAMBURAN -->
+    <div class="flower-container" id="flowerContainer"></div>
+
+</div>
+
     <!-- FLOATING BACKGROUND PARTICLES -->
     <div class="stars-container" id="starsContainer"></div>
     <div class="hearts-container" id="heartsContainer"></div>
@@ -506,6 +530,10 @@
             <p class="footer-copyright">&copy; <span id="currentYear"></span> Khusus untuk Halfa Rina Lisma. All Rights Reserved.</p>
         </div>
     </footer>
+
+<audio id="backgroundMusic" loop preload="auto">
+    <source src="audio/backsound.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
 
