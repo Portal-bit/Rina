@@ -288,6 +288,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const dailyVideos = [
     {
+        date: "16 AGUSTUS 2026",
+        video: "videos/16-agustus-2026.mp4",
+        title: "Kabar aku hari ini ❤️",
+        caption: "Hari ini aku mau cerita sesuatu..."
+    },
+
+    {
         date: "15 AGUSTUS 2026",
         video: "videos/15-agustus-2026.mp4",
         title: "Kabar aku hari ini ❤️",
@@ -695,3 +702,90 @@ bigLoveButton.addEventListener("click", () => {
     }, 1200);
 
 });
+
+// =========================================
+// KLIK KALAU KANGEN
+// =========================================
+
+const missYouButton = document.getElementById("missYouButton");
+const missYouMessage = document.getElementById("missYouMessage");
+const missYouText = document.getElementById("missYouText");
+
+const missYouMessages = [
+    "Aku juga kangen kamu. Sabar ya sayang, kita pasti ketemu. ❤️",
+
+    "Kalau kamu lagi kangen, ingat... ada aku yang juga lagi mikirin kamu dari jauh. 🥺❤️",
+
+    "Coba lihat ke langit malam ini. Mungkin kita sedang melihat langit yang sama. 🌙❤️",
+
+    "Jarak kita memang jauh, tapi rasa sayangku nggak ikut menjauh. ❤️",
+
+    "Aku nggak bisa tiba-tiba muncul di depan kamu sekarang, tapi aku bisa selalu ada di sini buat kamu. 🫂❤️",
+
+    "Jangan terlalu kangen ya... nanti aku ikut kangen dan malah nggak bisa tidur. 😭❤️",
+
+    "Suatu hari nanti, tombol ini nggak perlu kamu pencet lagi. Kamu tinggal bilang: aku kangen. Karena aku akan ada di samping kamu. ❤️",
+
+    "Kalau hari ini terasa berat, istirahat dulu ya. Kamu nggak sendirian. Ada aku. ❤️",
+
+    "Aku mungkin cuma bisa kamu lihat lewat layar sekarang, tapi cintaku ke kamu nyata. ❤️",
+
+    "Hei kamu... iya kamu. Aku sayang banget sama kamu. Jangan lupa itu. 🥺❤️"
+];
+
+let lastMissYouMessage = -1;
+
+if (missYouButton && missYouMessage && missYouText) {
+
+    missYouButton.addEventListener("click", () => {
+
+        let randomIndex;
+
+        // Hindari pesan yang sama muncul dua kali berturut-turut
+        do {
+            randomIndex =
+                Math.floor(
+                    Math.random() * missYouMessages.length
+                );
+        } while (
+            randomIndex === lastMissYouMessage
+        );
+
+        lastMissYouMessage = randomIndex;
+
+        missYouText.textContent =
+            missYouMessages[randomIndex];
+
+        missYouMessage.classList.remove("show");
+
+        // Paksa animasi muncul kembali
+        void missYouMessage.offsetWidth;
+
+        missYouMessage.classList.add("show");
+    });
+}
+
+// =========================================
+// BUNGA INTERAKTIF
+// =========================================
+
+const flowerButton =
+    document.getElementById("flowerButton");
+
+const flowerMessage =
+    document.getElementById("flowerMessage");
+
+if (flowerButton && flowerMessage) {
+
+    flowerButton.addEventListener("click", () => {
+
+        flowerMessage.classList.remove("show");
+
+        // Memicu ulang animasi
+        void flowerMessage.offsetWidth;
+
+        flowerMessage.classList.add("show");
+
+    });
+
+}
