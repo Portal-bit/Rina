@@ -2128,3 +2128,257 @@ section {
         font-size: 0.65rem;
     }
 }
+
+/* =========================================
+   KLIK KALAU KANGEN
+========================================= */
+
+.miss-you-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.miss-you-subtitle {
+    max-width: 600px;
+    margin: 15px auto 30px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 0.95rem;
+
+    color: #8a6870;
+}
+
+.miss-you-button {
+    border: none;
+    outline: none;
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #e88ca3,
+        #c85c78
+    );
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(180, 70, 100, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.miss-you-button:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 15px 30px rgba(180, 70, 100, 0.35);
+}
+
+.miss-you-button:active {
+    transform: scale(0.95);
+}
+
+.miss-you-message {
+    max-width: 600px;
+
+    margin: 35px auto 0;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        0 10px 30px rgba(150, 70, 90, 0.1);
+
+    opacity: 0;
+
+    transform: translateY(15px) scale(0.97);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.miss-you-message.show {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+.miss-you-heart {
+    display: block;
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+
+    animation: missYouHeartBeat 1.2s infinite;
+}
+
+.miss-you-message p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.4rem;
+    font-style: italic;
+
+    line-height: 1.6;
+
+    color: #814254;
+}
+
+@keyframes missYouHeartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .miss-you-section {
+        padding: 80px 20px;
+    }
+
+    .miss-you-button {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .miss-you-message p {
+        font-size: 1.25rem;
+    }
+}
+
+/* =========================================
+   BUNGA INTERAKTIF
+========================================= */
+
+.flower-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.interactive-flower-wrapper {
+    position: relative;
+
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.interactive-flower {
+    border: none;
+    background: transparent;
+
+    font-size: 90px;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(0 10px 15px rgba(150, 40, 70, 0.2));
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+
+    animation: flowerSway 3s ease-in-out infinite;
+}
+
+.interactive-flower:hover {
+    transform: scale(1.15);
+
+    filter:
+        drop-shadow(0 15px 25px rgba(150, 40, 70, 0.35));
+}
+
+.interactive-flower:active {
+    transform: scale(0.9);
+}
+
+@keyframes flowerSway {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+.flower-message {
+    max-width: 550px;
+
+    margin-top: 20px;
+    padding: 20px 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    box-shadow:
+        0 10px 30px rgba(150, 70, 90, 0.12);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px)
+        scale(0.95);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+    pointer-events: none;
+}
+
+.flower-message.show {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.flower-message p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.35rem;
+    font-style: italic;
+
+    line-height: 1.6;
+
+    color: #814254;
+}
