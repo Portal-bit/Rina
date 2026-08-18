@@ -288,6 +288,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const dailyVideos = [
     {
+        date: "17  DAN 18 AGUSTUS 2026",
+        video: "videos/17-18-agustus-2026.mp4",
+        title: "Kabar aku hari ini ❤️",
+        caption: "Hari ini aku mau cerita sesuatu..."
+    },
+    {
         date: "16 AGUSTUS 2026",
         video: "videos/16-agustus-2026.mp4",
         title: "Kabar aku hari ini ❤️",
