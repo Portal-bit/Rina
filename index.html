@@ -240,6 +240,97 @@
         </div>
     </section>
 
+<!-- SECTION: PERJALANAN ACEH -> TEMBORO -->
+<section class="journey-section" id="perjalanan">
+
+    <div class="container text-center">
+
+        <div class="section-header">
+            <span class="section-tag font-serif">
+                Sejauh apa pun jaraknya...
+            </span>
+
+            <h2 class="section-title">
+                Perjalanan Menuju Kamu ❤️
+            </h2>
+
+            <p class="section-subtitle">
+                Dari tempat aku berada, menuju tempat kamu berjuang.
+            </p>
+        </div>
+
+
+        <div class="journey-map">
+
+            <!-- TITIK ACEH -->
+            <div class="journey-location journey-start">
+
+                <div class="journey-heart">
+                    ❤️
+                </div>
+
+                <h3>ACEH</h3>
+
+                <p>
+                    Tempat aku menunggu kamu
+                </p>
+
+            </div>
+
+
+            <!-- GARIS PERJALANAN -->
+            <div class="journey-route">
+
+                <div class="route-line"></div>
+
+                <div class="route-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- PESAWAT -->
+                <div class="journey-plane" id="journeyPlane">
+                    ✈️
+                </div>
+
+            </div>
+
+
+            <!-- TITIK TEMBORO -->
+            <div class="journey-location journey-end">
+
+                <div class="journey-heart">
+                    ❤️
+                </div>
+
+                <h3>TEMBORO</h3>
+
+                <p>
+                    Tempat kamu sedang berjuang
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="journey-message">
+
+            <p id="journeyMessage">
+                "Jaraknya jauh, tapi hatiku tetap menuju kamu."
+            </p>
+
+            <span>❤️</span>
+
+        </div>
+
+    </div>
+
+</section>
+
 <!-- SECTION 3: FOTO KITA (GALLERY) -->
 <section class="photo-section" id="galeri">
     <div class="container">
@@ -642,7 +733,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- SECTION 12: FINAL MESSAGE -->
     <section class="final-message-section">
         <div class="container text-center">
@@ -664,9 +755,57 @@
         </div>
     </footer>
 
+<!-- NIGHT MODE BUTTON -->
+<button class="night-mode-button" id="nightModeButton">
+    <span class="night-mode-icon">🌙</span>
+    <span class="night-mode-text">Temani aku malam ini</span>
+</button>
+
+<!-- NIGHT MODE OVERLAY -->
+<div class="night-sky" id="nightSky">
+    <div class="moon">🌙</div>
+
+    <div class="night-stars">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+        <span>✦</span>
+    </div>
+</div>
+
 <audio id="backgroundMusic" loop preload="auto">
     <source src="audio/backsound.mp3" type="audio/mpeg">
 </audio>
+
+<!-- MUSIC PLAYER -->
+<div class="music-player" id="musicPlayer">
+
+    <button class="music-toggle" id="musicToggle" aria-label="Play / Pause Musik">
+        🎵
+    </button>
+
+    <div class="music-controls">
+        <span>🔊</span>
+
+        <input
+            type="range"
+            id="musicVolume"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+        >
+    </div>
+
+</div>
 
 <script src="script.js"></script>
 
