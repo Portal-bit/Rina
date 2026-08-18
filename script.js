@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const dailyVideos = [
     {
-        date: "17  DAN 18 AGUSTUS 2026",
+        date: "17-18 AGUSTUS 2026",
         video: "videos/17-18-agustus-2026.mp4",
         title: "Kabar aku hari ini ❤️",
         caption: "Hari ini aku mau cerita sesuatu..."
@@ -791,6 +791,94 @@ if (flowerButton && flowerMessage) {
         void flowerMessage.offsetWidth;
 
         flowerMessage.classList.add("show");
+
+    });
+
+}
+
+// =========================================
+// MUSIC PLAYER
+// =========================================
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+const musicVolume =
+    document.getElementById("musicVolume");
+
+if (musicToggle && backgroundMusic) {
+
+    // Play / Pause
+    musicToggle.addEventListener("click", () => {
+
+        if (backgroundMusic.paused) {
+
+            backgroundMusic.play()
+                .then(() => {
+                    musicToggle.textContent = "🎵";
+                })
+                .catch(error => {
+                    console.log(
+                        "Musik tidak dapat diputar:",
+                        error
+                    );
+                });
+
+        } else {
+
+            backgroundMusic.pause();
+
+            musicToggle.textContent = "🔇";
+        }
+
+    });
+
+
+    // Volume
+    musicVolume.addEventListener("input", () => {
+
+        backgroundMusic.volume =
+            musicVolume.value;
+
+    });
+
+}
+
+// =========================================
+// NIGHT MODE - TEMANI AKU MALAM INI
+// =========================================
+
+const nightModeButton =
+    document.getElementById("nightModeButton");
+
+const nightSky =
+    document.getElementById("nightSky");
+
+if (nightModeButton && nightSky) {
+
+    nightModeButton.addEventListener("click", () => {
+
+        document.body.classList.toggle("night-mode");
+
+        nightSky.classList.toggle("active");
+
+        const icon =
+            nightModeButton.querySelector(".night-mode-icon");
+
+        const text =
+            nightModeButton.querySelector(".night-mode-text");
+
+
+        if (document.body.classList.contains("night-mode")) {
+
+            icon.textContent = "🌙";
+            text.textContent = "Temani aku malam ini";
+
+        } else {
+
+            icon.textContent = "☀️";
+            text.textContent = "Kembali ke siang";
+        }
 
     });
 
