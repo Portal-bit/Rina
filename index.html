@@ -241,75 +241,180 @@
     </section>
 
 <!-- SECTION: PERJALANAN ACEH -> TEMBORO -->
-<section class="journey-section" id="perjalanan">
+<!-- =========================================
+     PETA PERJALANAN CINTA
+========================================= -->
 
-    <div class="container text-center">
+<section class="love-map-section" id="perjalanan">
 
-        <div class="section-header">
+    <div class="container">
+
+        <div class="section-header text-center">
+
             <span class="section-tag font-serif">
-                Sejauh apa pun jaraknya...
+                Perjalanan kita...
             </span>
 
             <h2 class="section-title">
-                Perjalanan Menuju Kamu ❤️
+                Peta Perjalanan Cinta 🗺️
             </h2>
 
             <p class="section-subtitle">
-                Dari tempat aku berada, menuju tempat kamu berjuang.
+                Sejauh apa pun perjalanannya, akhirnya tetap menuju kamu.
             </p>
+
         </div>
 
 
-        <div class="journey-map">
+        <!-- MAP -->
 
-            <!-- TITIK ACEH -->
-            <div class="journey-location journey-start">
+        <div class="love-map">
 
-                <div class="journey-heart">
-                    ❤️
-                </div>
+            <!-- ROUTE LINE -->
 
-                <h3>ACEH</h3>
+            <div class="map-route"></div>
 
-                <p>
-                    Tempat aku menunggu kamu
-                </p>
 
+            <!-- VEHICLE -->
+
+            <div class="travel-vehicle" id="travelVehicle">
+                ✈️
             </div>
 
 
-            <!-- GARIS PERJALANAN -->
-            <div class="journey-route">
+            <!-- ACEH -->
 
-                <div class="route-line"></div>
+            <button
+                class="map-location active"
+                data-location="aceh"
+                style="--location: 0%;"
+            >
 
-                <div class="route-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <span class="location-point">
+                    ❤️
+                </span>
 
-                <!-- PESAWAT -->
-                <div class="journey-plane" id="journeyPlane">
+                <span class="location-name">
+                    ACEH
+                </span>
+
+                <span class="location-small">
+                    Titik awal
+                </span>
+
+            </button>
+
+
+            <!-- JAKARTA -->
+
+            <button
+                class="map-location"
+                data-location="jakarta"
+                style="--location: 32%;"
+            >
+
+                <span class="location-point">
                     ✈️
-                </div>
+                </span>
 
+                <span class="location-name">
+                    JAKARTA
+                </span>
+
+                <span class="location-small">
+                    Transit
+                </span>
+
+            </button>
+
+
+            <!-- BANDARA -->
+
+            <button
+                class="map-location"
+                data-location="bandara"
+                style="--location: 55%;"
+            >
+
+                <span class="location-point">
+                    🛫
+                </span>
+
+                <span class="location-name">
+                    BANDARA
+                </span>
+
+                <span class="location-small">
+                    Transit lagi
+                </span>
+
+            </button>
+
+
+            <!-- TEMBORO -->
+
+            <button
+                class="map-location"
+                data-location="temboro"
+                style="--location: 78%;"
+            >
+
+                <span class="location-point">
+                    🚌
+                </span>
+
+                <span class="location-name">
+                    TEMBORO
+                </span>
+
+                <span class="location-small">
+                    Tujuanmu
+                </span>
+
+            </button>
+
+
+            <!-- FUTURE -->
+
+            <button
+                class="map-location future-location"
+                data-location="future"
+                style="--location: 100%;"
+            >
+
+                <span class="location-point">
+                    💍
+                </span>
+
+                <span class="location-name">
+                    TEMPAT KITA NANTI
+                </span>
+
+                <span class="location-small">
+                    Tujuan terakhir
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- TRAVEL STATUS -->
+
+        <div class="travel-status">
+
+            <div class="travel-status-icon" id="travelStatusIcon">
+                ✈️
             </div>
 
+            <div class="travel-status-text">
 
-            <!-- TITIK TEMBORO -->
-            <div class="journey-location journey-end">
+                <span id="travelStatusTitle">
+                    Berangkat dari Aceh
+                </span>
 
-                <div class="journey-heart">
-                    ❤️
-                </div>
-
-                <h3>TEMBORO</h3>
-
-                <p>
-                    Tempat kamu sedang berjuang
+                <p id="travelStatusDescription">
+                    Perjalanan menuju kamu dimulai...
                 </p>
 
             </div>
@@ -317,15 +422,44 @@
         </div>
 
 
-        <div class="journey-message">
+        <!-- STORY -->
 
-            <p id="journeyMessage">
-                "Jaraknya jauh, tapi hatiku tetap menuju kamu."
-            </p>
+        <div
+            class="location-story"
+            id="locationStory"
+        >
 
-            <span>❤️</span>
+            <div class="story-icon" id="storyIcon">
+                ❤️
+            </div>
+
+            <div class="story-content">
+
+                <span
+                    class="story-label"
+                    id="storyLabel"
+                >
+                    TITIK AWAL
+                </span>
+
+                <h3 id="storyTitle">
+                    ACEH
+                </h3>
+
+                <p id="storyText">
+                    Dari sini aku mulai menunggu kamu.
+                    Tempat dimana perjalanan kecil ini dimulai.
+                </p>
+
+            </div>
 
         </div>
+
+
+        <p class="map-final-message">
+            "Boleh sejauh apa pun jalannya,
+            asal akhirnya kita sampai di tempat yang sama." ❤️
+        </p>
 
     </div>
 
@@ -704,6 +838,75 @@
             </div>
         </div>
     </div>
+</section>
+
+<!-- SECTION: SUATU HARI NANTI -->
+<section class="future-section" id="suatu-hari-nanti">
+
+    <div class="future-background-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
+
+    <div class="container text-center">
+
+        <p class="section-tag font-serif">
+            Untuk masa depan kita...
+        </p>
+
+        <h2 class="future-title">
+            Suatu Hari Nanti...
+        </h2>
+
+        <div class="future-lines">
+
+            <p class="future-line">
+                Tidak ada lagi <strong>Aceh ↔ Jawa Timur.</strong>
+            </p>
+
+            <p class="future-line">
+                Tidak ada lagi layar.
+            </p>
+
+            <p class="future-line">
+                Tidak ada lagi menghitung hari untuk bertemu.
+            </p>
+
+        </div>
+
+        <div class="future-ring-wrapper">
+
+            <div class="future-ring">
+                💍
+            </div>
+
+            <div class="future-sparkles">
+                ✨
+            </div>
+
+        </div>
+
+        <div class="future-final">
+
+            <p>
+                Karena suatu hari nanti...
+            </p>
+
+            <h3>
+                Kita sudah berada di tempat yang sama.
+            </h3>
+
+            <div class="future-heart">
+                ❤️
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
     <!-- SECTION 11: SURPRISE BUTTON & FULLSCREEN OVERLAY -->
