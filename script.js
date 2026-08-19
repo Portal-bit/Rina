@@ -883,3 +883,373 @@ if (nightModeButton && nightSky) {
     });
 
 }
+
+// =========================================
+// PETA PERJALANAN CINTA
+// ACEH -> JAKARTA -> BANDARA -> TEMBORO
+// =========================================
+
+const travelVehicle =
+    document.getElementById("travelVehicle");
+
+const travelStatusIcon =
+    document.getElementById("travelStatusIcon");
+
+const travelStatusTitle =
+    document.getElementById("travelStatusTitle");
+
+const travelStatusDescription =
+    document.getElementById("travelStatusDescription");
+
+const locationStory =
+    document.getElementById("locationStory");
+
+const storyIcon =
+    document.getElementById("storyIcon");
+
+const storyLabel =
+    document.getElementById("storyLabel");
+
+const storyTitle =
+    document.getElementById("storyTitle");
+
+const storyText =
+    document.getElementById("storyText");
+
+const mapLocations =
+    document.querySelectorAll(".map-location");
+
+
+if (
+    travelVehicle &&
+    travelStatusIcon &&
+    travelStatusTitle &&
+    travelStatusDescription
+) {
+
+    /*
+    =========================================
+    DATA PERJALANAN
+    =========================================
+    */
+
+    const journeySteps = [
+
+        {
+            location: "aceh",
+
+            position: 0,
+
+            vehicle: "✈️",
+
+            statusIcon: "✈️",
+
+            title: "Berangkat dari Aceh",
+
+            description:
+                "Perjalanan menuju kamu akhirnya dimulai...",
+
+            label: "TITIK AWAL",
+
+            storyTitle: "ACEH",
+
+            storyIcon: "❤️",
+
+            story:
+                "Dari sini aku mulai menunggu kamu. Tempat dimana perjalanan kecil kita dimulai."
+        },
+
+
+        {
+            location: "jakarta",
+
+            position: 32,
+
+            vehicle: "✈️",
+
+            statusIcon: "🛬",
+
+            title: "Sampai di Jakarta",
+
+            description:
+                "Pesawat sudah sampai. Tapi perjalanan belum selesai...",
+
+            label: "TRANSIT PERTAMA",
+
+            storyTitle: "JAKARTA",
+
+            storyIcon: "✈️",
+
+            story:
+                "Kita pernah dipisahkan oleh jarak sejauh ini. Tapi perjalanan ini tetap terus berjalan menuju kamu."
+        },
+
+
+        {
+            location: "bandara",
+
+            position: 55,
+
+            vehicle: "✈️",
+
+            statusIcon: "⏳",
+
+            title: "Transit sebentar...",
+
+            description:
+                "Istirahat sebentar sebelum melanjutkan perjalanan.",
+
+            label: "TRANSIT",
+
+            storyTitle: "PERJALANAN BERLANJUT",
+
+            storyIcon: "🛫",
+
+            story:
+                "Kadang perjalanan memang harus berhenti sebentar. Tapi berhenti bukan berarti menyerah."
+        },
+
+
+        {
+            location: "temboro",
+
+            position: 78,
+
+            vehicle: "🚌",
+
+            statusIcon: "🚌",
+
+            title: "Menuju Temboro",
+
+            description:
+                "Sekarang perjalanan dilanjutkan dengan bus menuju kamu.",
+
+            label: "PERJALANAN TERAKHIR",
+
+            storyTitle: "TEMBORO",
+
+            storyIcon: "🏡",
+
+            story:
+                "Akhirnya sampai di tempat kamu sedang berjuang. Tempat dimana aku selalu menunggu kabar kamu."
+        },
+
+
+        {
+            location: "future",
+
+            position: 100,
+
+            vehicle: "💍",
+
+            statusIcon: "❤️",
+
+            title: "Tempat kita nanti",
+
+            description:
+                "Tidak ada lagi jarak. Tidak ada lagi perjalanan pulang.",
+
+            label: "TUJUAN TERAKHIR",
+
+            storyTitle: "TEMPAT KITA NANTI",
+
+            storyIcon: "💍",
+
+            story:
+                "Suatu hari nanti, perjalanan ini bukan lagi tentang bagaimana caranya sampai kepadamu. Karena kita sudah berada di tempat yang sama."
+        }
+
+    ];
+
+
+    /*
+    =========================================
+    UPDATE UI
+    =========================================
+    */
+
+    function updateJourney(step) {
+
+        travelVehicle.style.left =
+            step.position + "%";
+
+        travelVehicle.textContent =
+            step.vehicle;
+
+
+        travelStatusIcon.textContent =
+            step.statusIcon;
+
+        travelStatusTitle.textContent =
+            step.title;
+
+        travelStatusDescription.textContent =
+            step.description;
+
+
+        storyIcon.textContent =
+            step.storyIcon;
+
+        storyLabel.textContent =
+            step.label;
+
+        storyTitle.textContent =
+            step.storyTitle;
+
+        storyText.textContent =
+            step.story;
+
+
+        mapLocations.forEach(location => {
+
+            location.classList.remove("active");
+
+            if (
+                location.dataset.location ===
+                step.location
+            ) {
+
+                location.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    /*
+    =========================================
+    ANIMASI PERJALANAN
+    =========================================
+    */
+
+    async function runJourney() {
+
+        while (true) {
+
+            // ACEH
+            updateJourney(journeySteps[0]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 1800)
+            );
+
+
+            // TERBANG ACEH -> JAKARTA
+            updateJourney(journeySteps[1]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 6000)
+            );
+
+
+            // TRANSIT JAKARTA
+            updateJourney(journeySteps[1]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 3000)
+            );
+
+
+            // TERBANG JAKARTA -> BANDARA
+            updateJourney(journeySteps[2]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 5000)
+            );
+
+
+            // TRANSIT BANDARA
+            updateJourney(journeySteps[2]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 2500)
+            );
+
+
+            // BUS MENUJU TEMBORO
+            updateJourney(journeySteps[3]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 7000)
+            );
+
+
+            // SAMPAI TEMBORO
+            updateJourney(journeySteps[3]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 2500)
+            );
+
+
+            // TUJUAN AKHIR
+            updateJourney(journeySteps[4]);
+
+            await new Promise(
+                resolve =>
+                    setTimeout(resolve, 7000)
+            );
+
+        }
+
+    }
+
+
+    /*
+    =========================================
+    KLIK TITIK PERJALANAN
+    =========================================
+    */
+
+    mapLocations.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const location =
+                    button.dataset.location;
+
+                const selectedStep =
+                    journeySteps.find(
+                        step =>
+                            step.location ===
+                            location
+                    );
+
+                if (selectedStep) {
+
+                    updateJourney(
+                        selectedStep
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /*
+    =========================================
+    MULAI
+    =========================================
+    */
+
+    updateJourney(
+        journeySteps[0]
+    );
+
+    runJourney();
+
+}
