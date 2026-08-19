@@ -3172,3 +3172,1006 @@ body.night-mode .floating-heart {
         font-size: 60px;
     }
 }
+
+/* =========================================
+   SUATU HARI NANTI
+========================================= */
+
+.future-section {
+    position: relative;
+
+    min-height: 750px;
+
+    padding: 140px 20px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 210, 220, 0.35),
+            transparent 40%
+        );
+
+    text-align: center;
+}
+
+
+/* =========================================
+   BACKGROUND HEARTS
+========================================= */
+
+.future-background-hearts {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.future-background-hearts span {
+    position: absolute;
+
+    font-size: 40px;
+
+    color: rgba(210, 100, 130, 0.08);
+
+    animation:
+        futureHeartFloat 8s ease-in-out infinite;
+}
+
+.future-background-hearts span:nth-child(1) {
+    left: 10%;
+    top: 20%;
+}
+
+.future-background-hearts span:nth-child(2) {
+    left: 25%;
+    top: 70%;
+
+    animation-delay: 2s;
+}
+
+.future-background-hearts span:nth-child(3) {
+    right: 15%;
+    top: 25%;
+
+    animation-delay: 1s;
+}
+
+.future-background-hearts span:nth-child(4) {
+    right: 25%;
+    bottom: 15%;
+
+    animation-delay: 3s;
+}
+
+.future-background-hearts span:nth-child(5) {
+    left: 50%;
+    top: 10%;
+
+    animation-delay: 4s;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.future-title {
+    margin: 15px 0 50px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(
+        3rem,
+        7vw,
+        5.5rem
+    );
+
+    font-weight: 600;
+
+    font-style: italic;
+
+    color: #8d4056;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   FUTURE TEXT
+========================================= */
+
+.future-lines {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.future-line {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(
+        1.25rem,
+        2.5vw,
+        1.7rem
+    );
+
+    color: #765762;
+
+    opacity: 0;
+
+    animation:
+        futureTextReveal 1s ease forwards;
+}
+
+.future-line:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.future-line:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.future-line:nth-child(3) {
+    animation-delay: 1.3s;
+}
+
+.future-line strong {
+    color: #9b3f58;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RING
+========================================= */
+
+.future-ring-wrapper {
+    position: relative;
+
+    width: 180px;
+    height: 180px;
+
+    margin: 70px auto 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.future-ring {
+    font-size: 95px;
+
+    filter:
+        drop-shadow(
+            0 10px 20px rgba(160, 70, 90, 0.2)
+        );
+
+    animation:
+        ringFloat 3s ease-in-out infinite;
+}
+
+.future-sparkles {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    pointer-events: none;
+
+    animation:
+        sparkleRotate 5s linear infinite;
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.future-final {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+.future-final p {
+    margin-bottom: 8px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.2rem;
+
+    font-style: italic;
+
+    color: #9a6a77;
+}
+
+.future-final h3 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        1.5rem,
+        3vw,
+        2.2rem
+    );
+
+    font-weight: 600;
+
+    color: #814254;
+}
+
+.future-heart {
+    margin-top: 20px;
+
+    font-size: 30px;
+
+    animation:
+        futureHeartBeat 2s ease-in-out infinite;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes futureTextReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes ringFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-5deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(5deg)
+            scale(1.08);
+    }
+}
+
+@keyframes sparkleRotate {
+
+    0% {
+        transform:
+            rotate(0deg)
+            scale(0.9);
+
+        opacity: 0.5;
+    }
+
+    50% {
+        transform:
+            rotate(180deg)
+            scale(1.2);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            rotate(360deg)
+            scale(0.9);
+
+        opacity: 0.5;
+    }
+}
+
+@keyframes futureHeartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes futureHeartFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            rotate(10deg);
+    }
+}
+
+
+/* =========================================
+   NIGHT MODE
+========================================= */
+
+body.night-mode .future-section {
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(95, 90, 150, 0.25),
+            transparent 45%
+        );
+}
+
+body.night-mode .future-title {
+    color: #eee5f1;
+}
+
+body.night-mode .future-line {
+    color: #c7c5d8;
+}
+
+body.night-mode .future-line strong {
+    color: #f0a8bd;
+}
+
+body.night-mode .future-final p {
+    color: #aaa8c2;
+}
+
+body.night-mode .future-final h3 {
+    color: #eee5f1;
+}
+
+body.night-mode .future-background-hearts span {
+    color: rgba(220, 180, 220, 0.08);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .future-section {
+        min-height: 650px;
+
+        padding: 100px 20px;
+    }
+
+    .future-title {
+        margin-bottom: 40px;
+    }
+
+    .future-ring-wrapper {
+        margin-top: 55px;
+        margin-bottom: 35px;
+
+        width: 140px;
+        height: 140px;
+    }
+
+    .future-ring {
+        font-size: 75px;
+    }
+
+    .future-sparkles {
+        font-size: 28px;
+    }
+
+    .future-line {
+        font-size: 1.2rem;
+    }
+}
+
+/* =========================================
+   PETA PERJALANAN CINTA
+========================================= */
+
+.love-map-section {
+    position: relative;
+
+    padding: 120px 20px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   MAP
+========================================= */
+
+.love-map {
+    position: relative;
+
+    width: 100%;
+    max-width: 1100px;
+
+    height: 230px;
+
+    margin: 80px auto 40px;
+}
+
+
+/* =========================================
+   ROUTE
+========================================= */
+
+.map-route {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 95px;
+
+    height: 4px;
+
+    border-radius: 10px;
+
+    background:
+        repeating-linear-gradient(
+            to right,
+            #d8899f 0px,
+            #d8899f 10px,
+            transparent 10px,
+            transparent 18px
+        );
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   LOCATION
+========================================= */
+
+.map-location {
+    position: absolute;
+
+    left: var(--location);
+
+    top: 35px;
+
+    transform: translateX(-50%);
+
+    width: 130px;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    z-index: 3;
+
+    font-family: "Poppins", sans-serif;
+}
+
+
+.location-point {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 2px solid rgba(214, 111, 137, 0.35);
+
+    box-shadow:
+        0 8px 25px rgba(120, 50, 70, 0.12);
+
+    font-size: 25px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.map-location:hover .location-point,
+.map-location.active .location-point {
+    transform: scale(1.15);
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 8px rgba(214, 111, 137, 0.08),
+        0 10px 30px rgba(120, 50, 70, 0.18);
+}
+
+
+.location-name {
+    margin-top: 13px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: #814254;
+
+    white-space: nowrap;
+}
+
+
+.location-small {
+    margin-top: 4px;
+
+    font-size: 0.65rem;
+
+    color: #9b747f;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   FUTURE LOCATION
+========================================= */
+
+.future-location .location-point {
+    background:
+        linear-gradient(
+            135deg,
+            #fff4d7,
+            #fff
+        );
+}
+
+
+/* =========================================
+   TRAVEL VEHICLE
+========================================= */
+
+.travel-vehicle {
+    position: absolute;
+
+    top: 68px;
+
+    left: 0%;
+
+    z-index: 10;
+
+    font-size: 32px;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 7px 8px rgba(80, 40, 60, 0.15)
+        );
+
+    transition:
+        left 0.8s ease-in-out,
+        top 0.8s ease-in-out;
+
+    transform: translateX(-50%);
+}
+
+
+/* =========================================
+   TRAVEL STATUS
+========================================= */
+
+.travel-status {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 20px auto 0;
+
+    padding: 18px 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 10px 30px rgba(120, 50, 70, 0.08);
+}
+
+
+.travel-status-icon {
+    width: 50px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(214, 111, 137, 0.1);
+
+    font-size: 24px;
+}
+
+
+.travel-status-text {
+    text-align: left;
+}
+
+
+.travel-status-text span {
+    display: block;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: #814254;
+}
+
+
+.travel-status-text p {
+    margin: 4px 0 0;
+
+    font-size: 0.75rem;
+
+    color: #95727d;
+}
+
+
+/* =========================================
+   STORY
+========================================= */
+
+.location-story {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 45px auto 0;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    text-align: left;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 244, 247, 0.9),
+            rgba(255, 255, 255, 0.75)
+        );
+
+    border:
+        1px solid rgba(214, 111, 137, 0.1);
+
+    box-shadow:
+        0 15px 40px rgba(120, 50, 70, 0.09);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.story-icon {
+    width: 55px;
+    height: 55px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(214, 111, 137, 0.1);
+
+    font-size: 25px;
+}
+
+
+.story-label {
+    font-size: 0.65rem;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    color: #c06b82;
+}
+
+
+.story-content h3 {
+    margin: 5px 0 8px;
+
+    font-family: "Playfair Display", serif;
+
+    color: #814254;
+}
+
+
+.story-content p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.15rem;
+
+    line-height: 1.6;
+
+    color: #765762;
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.map-final-message {
+    max-width: 650px;
+
+    margin: 40px auto 0;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.35rem;
+
+    font-style: italic;
+
+    line-height: 1.6;
+
+    color: #814254;
+}
+
+
+/* =========================================
+   NIGHT MODE
+========================================= */
+
+body.night-mode .map-location .location-point {
+    background: rgba(30, 34, 68, 0.9);
+
+    border-color:
+        rgba(220, 180, 220, 0.2);
+}
+
+
+body.night-mode .location-name {
+    color: #eee5f1;
+}
+
+
+body.night-mode .location-small {
+    color: #aaa8c2;
+}
+
+
+body.night-mode .travel-status {
+    background:
+        rgba(28, 31, 63, 0.75);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+body.night-mode .travel-status-text span {
+    color: #eee5f1;
+}
+
+
+body.night-mode .travel-status-text p {
+    color: #aaa8c2;
+}
+
+
+body.night-mode .location-story {
+    background:
+        rgba(28, 31, 63, 0.8);
+
+    border-color:
+        rgba(220, 180, 220, 0.1);
+}
+
+
+body.night-mode .story-content h3 {
+    color: #eee5f1;
+}
+
+
+body.night-mode .story-content p {
+    color: #c7c5d8;
+}
+
+
+body.night-mode .map-final-message {
+    color: #d8c6d2;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .love-map-section {
+        padding: 90px 15px;
+    }
+
+    .love-map {
+        height: 500px;
+
+        max-width: 320px;
+
+        margin-top: 50px;
+    }
+
+
+    .map-route {
+        top: 20px;
+        bottom: 20px;
+
+        left: 50%;
+
+        right: auto;
+
+        width: 3px;
+        height: auto;
+
+        background:
+            repeating-linear-gradient(
+                to bottom,
+                #d8899f 0px,
+                #d8899f 10px,
+                transparent 10px,
+                transparent 18px
+            );
+    }
+
+
+    .map-location {
+        left: 50%;
+
+        width: 140px;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    .map-location:nth-of-type(1) {
+        top: 0;
+    }
+
+    .map-location:nth-of-type(2) {
+        top: 115px;
+    }
+
+    .map-location:nth-of-type(3) {
+        top: 230px;
+    }
+
+    .map-location:nth-of-type(4) {
+        top: 345px;
+    }
+
+    .map-location:nth-of-type(5) {
+        top: 455px;
+    }
+
+
+    .travel-vehicle {
+        top: 15px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    .travel-status {
+        padding: 15px;
+
+        margin-top: 20px;
+    }
+
+
+    .location-story {
+        padding: 22px;
+
+        gap: 14px;
+    }
+
+
+    .story-icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 20px;
+    }
+
+
+    .story-content p {
+        font-size: 1.05rem;
+    }
+
+}
