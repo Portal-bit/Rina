@@ -4175,3 +4175,1702 @@ body.night-mode .map-final-message {
     }
 
 }
+
+/* =========================================
+   DETAK JANTUNG KITA
+========================================= */
+
+.heartbeat-section {
+    position: relative;
+
+    min-height: 850px;
+
+    padding: 130px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #17172b 0%,
+            #090a14 45%,
+            #03040a 100%
+        );
+
+    color: #fff;
+}
+
+
+/* =========================================
+   BACKGROUND GRID
+========================================= */
+
+.heartbeat-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.15;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.heartbeat-stars {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.heartbeat-stars span {
+    position: absolute;
+
+    color: rgba(255,255,255,0.45);
+
+    animation:
+        heartbeatStar 4s ease-in-out infinite;
+}
+
+.heartbeat-stars span:nth-child(1) {
+    top: 15%;
+    left: 10%;
+}
+
+.heartbeat-stars span:nth-child(2) {
+    top: 25%;
+    right: 18%;
+}
+
+.heartbeat-stars span:nth-child(3) {
+    top: 55%;
+    left: 8%;
+}
+
+.heartbeat-stars span:nth-child(4) {
+    bottom: 20%;
+    left: 25%;
+}
+
+.heartbeat-stars span:nth-child(5) {
+    top: 30%;
+    left: 75%;
+}
+
+.heartbeat-stars span:nth-child(6) {
+    bottom: 15%;
+    right: 15%;
+}
+
+.heartbeat-stars span:nth-child(7) {
+    top: 65%;
+    right: 30%;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.heartbeat-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   MONITOR LABEL
+========================================= */
+
+.monitor-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 14px;
+
+    border: 1px solid
+        rgba(255, 100, 130, 0.3);
+
+    border-radius: 30px;
+
+    color: #ff829d;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 3px;
+
+    background:
+        rgba(255, 70, 110, 0.05);
+}
+
+
+.monitor-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ff5577;
+
+    box-shadow:
+        0 0 10px #ff5577;
+
+    animation:
+        monitorBlink 1s infinite;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.heartbeat-title {
+    margin: 25px 0 55px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(3rem, 7vw, 5.5rem);
+
+    font-weight: 600;
+
+    font-style: italic;
+
+    color: #f8edf1;
+
+    text-shadow:
+        0 0 30px rgba(255, 100, 130, 0.15);
+}
+
+
+/* =========================================
+   ECG MONITOR
+========================================= */
+
+.ecg-monitor {
+    position: relative;
+
+    width: 100%;
+
+    height: 150px;
+
+    overflow: hidden;
+
+    border-top:
+        1px solid rgba(255,255,255,0.04);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.04);
+
+    background:
+        rgba(255,255,255,0.015);
+}
+
+
+/* GRID */
+
+.ecg-monitor::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,80,110,0.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,80,110,0.05) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        25px 25px;
+}
+
+
+/* ECG LINE */
+
+.ecg-line {
+    position: absolute;
+
+    left: -100%;
+
+    top: 50%;
+
+    width: 200%;
+
+    height: 100px;
+
+    transform:
+        translateY(-50%);
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='100' viewBox='0 0 700 100'%3E%3Cpath d='M0 50 L80 50 L95 50 L105 25 L115 75 L125 50 L180 50 L195 50 L210 15 L225 85 L240 50 L330 50 L350 50 L365 30 L375 70 L385 50 L470 50 L490 50 L505 18 L520 82 L535 50 L620 50 L640 50 L655 28 L665 72 L675 50 L700 50' fill='none' stroke='%23ff5577' stroke-width='3'/%3E%3C/svg%3E");
+
+    background-repeat: repeat-x;
+
+    background-size:
+        700px 100px;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(255,85,119,0.8)
+        );
+
+    animation:
+        ecgMove 3s linear infinite;
+}
+
+
+.ecg-glow {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,70,110,0.08),
+            transparent 60%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.heartbeat-info {
+    margin: 45px auto 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 45px;
+}
+
+
+.heartbeat-stat {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-width: 150px;
+}
+
+
+.stat-label {
+    margin-bottom: 8px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 3px;
+
+    color: #8c8c9d;
+}
+
+
+.heartbeat-stat strong {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 2rem;
+
+    font-weight: 600;
+
+    color: #ff829d;
+}
+
+
+.heartbeat-stat small {
+    margin-top: 3px;
+
+    font-size: 0.7rem;
+
+    color: #777789;
+}
+
+
+.heartbeat-divider {
+    width: 1px;
+
+    height: 55px;
+
+    background:
+        rgba(255,255,255,0.12);
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.heartbeat-intro {
+    max-width: 500px;
+
+    margin: 45px auto 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.35rem;
+
+    font-style: italic;
+
+    line-height: 1.6;
+
+    color: #aaa9b8;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.heartbeat-button {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 25px;
+
+    border:
+        1px solid rgba(255,100,130,0.4);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,70,110,0.08);
+
+    color: #ffb0bf;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.8rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.heartbeat-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255,70,110,0.15);
+
+    box-shadow:
+        0 10px 35px
+        rgba(255,70,110,0.15);
+}
+
+
+.heartbeat-button.active {
+    border-color:
+        rgba(255,100,130,0.7);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,70,110,0.2);
+}
+
+
+/* =========================================
+   LIVE HEARTBEAT
+========================================= */
+
+.heartbeat-live {
+    display: none;
+
+    margin-top: 45px;
+}
+
+
+.heartbeat-live.active {
+    display: block;
+
+    animation:
+        fadeHeartbeat 0.8s ease;
+}
+
+
+.live-heart {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(255,70,110,0.5)
+        );
+
+    animation:
+        realHeartbeat 1s infinite;
+}
+
+
+.live-text {
+    margin: 15px 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.2rem;
+
+    font-style: italic;
+
+    color: #aaa9b8;
+}
+
+
+/* PULSE DOTS */
+
+.live-pulse {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.live-pulse span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #ff5577;
+
+    box-shadow:
+        0 0 8px #ff5577;
+
+    animation:
+        pulseDot 1s infinite;
+}
+
+
+.live-pulse span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.live-pulse span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.heartbeat-final {
+    display: none;
+
+    margin-top: 70px;
+}
+
+
+.heartbeat-final.active {
+    display: block;
+
+    animation:
+        finalHeartbeatReveal 2s ease forwards;
+}
+
+
+.heartbeat-final p {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.3rem;
+
+    font-style: italic;
+
+    color: #aaa9b8;
+}
+
+
+.heartbeat-final h3 {
+    margin: 5px 0 15px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.7rem, 4vw, 2.6rem);
+
+    color: #ffb0bf;
+
+    font-weight: 600;
+}
+
+
+.heartbeat-final span {
+    font-size: 25px;
+
+    animation:
+        finalHeart 2s infinite;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes ecgMove {
+
+    from {
+        transform:
+            translateY(-50%)
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateY(-50%)
+            translateX(-700px);
+    }
+}
+
+
+@keyframes realHeartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.18);
+    }
+
+    20% {
+        transform: scale(0.98);
+    }
+
+    30% {
+        transform: scale(1.12);
+    }
+
+    45% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes monitorBlink {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        transform: scale(0.7);
+
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.4);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes heartbeatStar {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+
+@keyframes fadeHeartbeat {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes finalHeartbeatReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes finalHeart {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .heartbeat-section {
+        min-height: 750px;
+
+        padding:
+            100px 15px;
+    }
+
+
+    .heartbeat-title {
+        margin-bottom: 40px;
+    }
+
+
+    .ecg-monitor {
+        height: 120px;
+    }
+
+
+    .heartbeat-info {
+        gap: 20px;
+    }
+
+
+    .heartbeat-stat {
+        min-width: 120px;
+    }
+
+
+    .heartbeat-stat strong {
+        font-size: 1.5rem;
+    }
+
+
+    .heartbeat-divider {
+        height: 45px;
+    }
+
+
+    .heartbeat-intro {
+        font-size: 1.2rem;
+    }
+
+
+    .live-heart {
+        font-size: 60px;
+    }
+
+}
+
+/* =========================================
+   SEMESTA KITA
+========================================= */
+
+.universe-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    height: 1000px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #17152f 0%,
+            #09091b 38%,
+            #02030a 75%,
+            #000 100%
+        );
+
+    color: white;
+
+    isolation: isolate;
+}
+
+
+/* =========================================
+   GALAXY BACKGROUND
+========================================= */
+
+.universe-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(140,90,255,0.12),
+            transparent 55%
+        );
+
+    z-index: -5;
+}
+
+
+.universe-nebula {
+    position: absolute;
+
+    width: 700px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    opacity: 0.16;
+
+    pointer-events: none;
+
+    z-index: -4;
+}
+
+
+.nebula-one {
+    top: 5%;
+    left: -10%;
+
+    background:
+        radial-gradient(
+            circle,
+            #9b5cff,
+            transparent 70%
+        );
+
+    transform:
+        rotate(-25deg);
+}
+
+
+.nebula-two {
+    right: -15%;
+    bottom: 5%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff5c91,
+            transparent 70%
+        );
+
+    transform:
+        rotate(30deg);
+}
+
+
+/* =========================================
+   STAR FIELD
+========================================= */
+
+.universe-star-field {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+.universe-star-field span {
+    position: absolute;
+
+    display: block;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0.6;
+
+    animation:
+        universeTwinkle
+        var(--twinkle-time)
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.universe-heading {
+    position: absolute;
+
+    top: 70px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 90%;
+
+    max-width: 700px;
+
+    text-align: center;
+
+    z-index: 10;
+}
+
+
+.universe-heading span {
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,0.45);
+}
+
+
+.universe-heading h2 {
+    margin: 12px 0 5px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(3rem, 7vw, 5rem);
+
+    font-style: italic;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffb3c6,
+            #fff
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.universe-heading p {
+    margin: 0;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 0.75rem;
+
+    color: rgba(255,255,255,0.5);
+}
+
+
+/* =========================================
+   CENTER
+========================================= */
+
+.universe-center {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 250px;
+    height: 250px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 5;
+}
+
+
+.universe-heart {
+    position: relative;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,100,140,0.25),
+            rgba(255,50,100,0.03) 65%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 50px rgba(255,70,120,0.25);
+
+    animation:
+        universeHeartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.universe-heart span {
+    font-size: 48px;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(255,70,120,0.7)
+        );
+}
+
+
+.universe-names {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 15px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 1.15rem;
+
+    letter-spacing: 2px;
+}
+
+
+.universe-names span {
+    font-size: 12px;
+
+    animation:
+        universeHeartPulse
+        1.4s
+        infinite;
+}
+
+
+.universe-center small {
+    margin-top: 7px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 0.95rem;
+
+    font-style: italic;
+
+    color: rgba(255,255,255,0.45);
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.center-orbit {
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-one {
+    width: 210px;
+    height: 210px;
+
+    animation:
+        orbitRotate
+        20s
+        linear
+        infinite;
+}
+
+
+.orbit-two {
+    width: 340px;
+    height: 340px;
+
+    transform:
+        rotateX(65deg);
+
+    border-color:
+        rgba(255,120,160,0.08);
+
+    animation:
+        orbitRotateReverse
+        28s
+        linear
+        infinite;
+}
+
+
+/* =========================================
+   PLANETS
+========================================= */
+
+.universe-planet {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: none;
+
+    background: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    padding: 10px;
+
+    z-index: 8;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.universe-planet:hover {
+    transform:
+        scale(1.12);
+}
+
+
+.planet-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 0 30px
+        rgba(255,255,255,0.08);
+
+    font-size: 35px;
+
+    backdrop-filter:
+        blur(5px);
+
+    animation:
+        planetFloat
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+.planet-label {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    text-align: left;
+}
+
+
+.planet-label strong {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 0.95rem;
+}
+
+
+.planet-label small {
+    margin-top: 2px;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 0.55rem;
+
+    color:
+        rgba(255,255,255,0.45);
+}
+
+
+/* POSITIONS */
+
+.planet-story {
+    top: 31%;
+    left: 9%;
+}
+
+
+.planet-memory {
+    top: 63%;
+    left: 14%;
+}
+
+
+.planet-daily {
+    top: 28%;
+    right: 10%;
+}
+
+
+.planet-letter {
+    top: 62%;
+    right: 13%;
+}
+
+
+.planet-future {
+    bottom: 9%;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.planet-future:hover {
+    transform:
+        translateX(-50%)
+        scale(1.12);
+}
+
+
+/* =========================================
+   CONNECTION LINES
+========================================= */
+
+.universe-planet::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,150,180,0.25)
+        );
+
+    pointer-events: none;
+}
+
+
+.planet-story::before,
+.planet-memory::before {
+    right: -90px;
+}
+
+
+.planet-daily::before,
+.planet-letter::before {
+    left: -90px;
+
+    transform:
+        rotate(180deg);
+}
+
+
+.planet-future::before {
+    display: none;
+}
+
+
+/* =========================================
+   INSTRUCTION
+========================================= */
+
+.universe-instruction {
+    position: absolute;
+
+    bottom: 35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,0.35);
+
+    z-index: 10;
+}
+
+
+.universe-instruction span {
+    color: #ff91ac;
+
+    animation:
+        universeTwinkle
+        2s
+        infinite;
+}
+
+
+/* =========================================
+   ZOOM OVERLAY
+========================================= */
+
+.universe-zoom {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #19142f,
+            #03030a 70%
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(0.3);
+
+    transition:
+        opacity 0.8s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        visibility 0.8s;
+
+    z-index: 99999;
+
+    pointer-events: none;
+}
+
+
+.universe-zoom.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+.zoom-content {
+    text-align: center;
+
+    animation:
+        zoomContent
+        1.5s
+        ease;
+}
+
+
+.zoom-icon {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(255,100,150,0.6)
+        );
+}
+
+
+.zoom-content p {
+    margin: 20px 0 5px;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,0.4);
+}
+
+
+.zoom-content h3 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-style: italic;
+
+    color: #ffb3c6;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes universeHeartPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+@keyframes planetFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+@keyframes universeTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+
+@keyframes orbitRotate {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes orbitRotateReverse {
+
+    from {
+        transform:
+            rotateX(65deg)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotate(-360deg);
+    }
+}
+
+
+@keyframes zoomContent {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.4);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .universe-section {
+        height: 900px;
+    }
+
+
+    .universe-heading {
+        top: 45px;
+    }
+
+
+    .universe-heading h2 {
+        font-size: 3rem;
+    }
+
+
+    .universe-heading p {
+        font-size: 0.65rem;
+    }
+
+
+    .universe-center {
+        top: 48%;
+    }
+
+
+    .planet-icon {
+        width: 58px;
+        height: 58px;
+
+        font-size: 27px;
+    }
+
+
+    .planet-label strong {
+        font-size: 0.75rem;
+    }
+
+
+    .planet-label small {
+        display: none;
+    }
+
+
+    .planet-story {
+        top: 28%;
+        left: 3%;
+    }
+
+
+    .planet-memory {
+        top: 64%;
+        left: 3%;
+    }
+
+
+    .planet-daily {
+        top: 28%;
+        right: 3%;
+    }
+
+
+    .planet-letter {
+        top: 64%;
+        right: 3%;
+    }
+
+
+    .planet-future {
+        bottom: 10%;
+    }
+
+
+    .universe-planet::before {
+        display: none;
+    }
+
+
+    .orbit-two {
+        width: 290px;
+        height: 290px;
+    }
+
+
+    .universe-instruction {
+        bottom: 20px;
+
+        white-space: nowrap;
+    }
+
+}
