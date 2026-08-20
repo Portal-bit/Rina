@@ -1253,3 +1253,265 @@ if (
     runJourney();
 
 }
+
+// =========================================
+// DETAK JANTUNG KITA
+// =========================================
+
+const heartbeatButton =
+    document.getElementById("heartbeatButton");
+
+const heartbeatSound =
+    document.getElementById("heartbeatSound");
+
+const heartbeatLive =
+    document.getElementById("heartbeatLive");
+
+const heartbeatFinal =
+    document.getElementById("heartbeatFinal");
+
+const heartbeatBPM =
+    document.getElementById("heartbeatBPM");
+
+
+if (
+    heartbeatButton &&
+    heartbeatSound &&
+    heartbeatLive &&
+    heartbeatFinal
+) {
+
+    let heartbeatStarted = false;
+
+
+    heartbeatButton.addEventListener("click", () => {
+
+        if (!heartbeatStarted) {
+
+            heartbeatStarted = true;
+
+
+            // =================================
+            // MULAI SUARA DETAK
+            // =================================
+
+            heartbeatSound.currentTime = 0;
+
+            heartbeatSound.volume = 0.7;
+
+            heartbeatSound.play()
+                .catch(error => {
+
+                    console.log(
+                        "Suara detak tidak dapat diputar:",
+                        error
+                    );
+
+                });
+
+
+            // =================================
+            // TAMPILKAN ANIMASI
+            // =================================
+
+            heartbeatLive.classList.add("active");
+
+            heartbeatButton.classList.add("active");
+
+            heartbeatButton.innerHTML =
+                `<span class="heartbeat-button-icon">❤️</span>
+                 <span>Detaknya untuk kamu...</span>`;
+
+
+            // =================================
+            // BPM
+            // =================================
+
+            if (heartbeatBPM) {
+
+                heartbeatBPM.textContent =
+                    "72 BPM";
+
+            }
+
+
+            // =================================
+            // SETELAH BEBERAPA DETIK
+            // =================================
+
+            setTimeout(() => {
+
+                heartbeatFinal.classList.add("active");
+
+            }, 7000);
+
+        }
+
+    });
+
+}
+
+// =========================================
+// SEMESTA KITA
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const universeSection =
+        document.getElementById("semesta");
+
+    const starField =
+        document.getElementById("universeStarField");
+
+    const zoomOverlay =
+        document.getElementById("universeZoom");
+
+    const zoomTitle =
+        document.getElementById("zoomTitle");
+
+    const zoomIcon =
+        document.getElementById("zoomIcon");
+
+
+    // =====================================
+    // BUAT BINTANG RANDOM
+    // =====================================
+
+    if (starField) {
+
+        for (let i = 0; i < 100; i++) {
+
+            const star =
+                document.createElement("span");
+
+            const size =
+                Math.random() * 2 + 1;
+
+            const duration =
+                Math.random() * 3 + 2;
+
+            star.style.left =
+                Math.random() * 100 + "%";
+
+            star.style.top =
+                Math.random() * 100 + "%";
+
+            star.style.width =
+                size + "px";
+
+            star.style.height =
+                size + "px";
+
+            star.style.setProperty(
+                "--twinkle-time",
+                duration + "s"
+            );
+
+            star.style.animationDelay =
+                Math.random() * 4 + "s";
+
+            starField.appendChild(star);
+        }
+
+    }
+
+
+    // =====================================
+    // PLANET CLICK
+    // =====================================
+
+    const planets =
+        document.querySelectorAll(
+            ".universe-planet"
+        );
+
+
+    planets.forEach(planet => {
+
+        planet.addEventListener(
+            "click",
+            () => {
+
+                const target =
+                    planet.dataset.target;
+
+                const title =
+                    planet.dataset.title;
+
+
+                const icon =
+                    planet.querySelector(
+                        ".planet-icon"
+                    );
+
+
+                // tampilkan zoom
+
+                if (zoomOverlay) {
+
+                    zoomOverlay.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                if (zoomTitle) {
+
+                    zoomTitle.textContent =
+                        title;
+
+                }
+
+
+                if (zoomIcon && icon) {
+
+                    zoomIcon.textContent =
+                        icon.textContent;
+
+                }
+
+
+                // =================================
+                // ZOOM SELESAI
+                // =================================
+
+                setTimeout(() => {
+
+                    if (zoomOverlay) {
+
+                        zoomOverlay.classList.remove(
+                            "active"
+                        );
+
+                    }
+
+
+                    // masuk ke section
+
+                    if (target) {
+
+                        const destination =
+                            document.querySelector(
+                                target
+                            );
+
+                        if (destination) {
+
+                            destination.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                    }
+
+                }, 1700);
+
+            }
+        );
+
+    });
+
+});
