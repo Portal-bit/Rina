@@ -909,6 +909,323 @@
 
 </section>
 
+<!-- =========================================
+     DETAK JANTUNG KITA
+========================================= -->
+
+<section class="heartbeat-section" id="detak-jantung">
+
+    <div class="heartbeat-grid"></div>
+
+    <div class="heartbeat-stars">
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+        <span>·</span>
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+    </div>
+
+    <div class="heartbeat-content">
+
+        <div class="monitor-label">
+            <span class="monitor-dot"></span>
+            LOVE MONITOR
+        </div>
+
+        <h2 class="heartbeat-title">
+            Detak Jantung Kita
+        </h2>
+
+        <div class="ecg-monitor">
+
+            <div class="ecg-line"></div>
+
+            <div class="ecg-glow"></div>
+
+        </div>
+
+
+        <div class="heartbeat-info">
+
+            <div class="heartbeat-stat">
+
+                <span class="stat-label">
+                    JARAK
+                </span>
+
+                <strong>
+                    2.000+
+                </strong>
+
+                <small>
+                    kilometer
+                </small>
+
+            </div>
+
+
+            <div class="heartbeat-divider"></div>
+
+
+            <div class="heartbeat-stat">
+
+                <span class="stat-label">
+                    DETAK
+                </span>
+
+                <strong id="heartbeatBPM">
+                    ❤️
+                </strong>
+
+                <small>
+                    tetap untuk kamu
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <p class="heartbeat-intro">
+            Jarak mungkin memisahkan kita,
+            tapi ada satu hal yang tetap dekat.
+        </p>
+
+
+        <button
+            class="heartbeat-button"
+            id="heartbeatButton"
+        >
+
+            <span class="heartbeat-button-icon">
+                🫀
+            </span>
+
+            <span>
+                Dengarkan detaknya
+            </span>
+
+        </button>
+
+
+        <!-- HEARTBEAT ACTIVE -->
+
+        <div
+            class="heartbeat-live"
+            id="heartbeatLive"
+        >
+
+            <div class="live-heart" id="liveHeart">
+                ❤️
+            </div>
+
+            <p class="live-text">
+                Dengarkan...
+            </p>
+
+            <div class="live-pulse">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <!-- FINAL MESSAGE -->
+
+        <div
+            class="heartbeat-final"
+            id="heartbeatFinal"
+        >
+
+            <p>
+                Selama masih berdetak,
+            </p>
+
+            <h3>
+                masih ada kamu.
+            </h3>
+
+            <span>
+                ❤️
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AUDIO DETAK JANTUNG -->
+
+<audio
+    id="heartbeatSound"
+    preload="auto"
+>
+    <source
+        src="audio/heartbeat.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+<!-- =========================================
+     SEMESTA KITA
+========================================= -->
+
+<section class="universe-section" id="semesta">
+
+    <!-- BACKGROUND GALAXY -->
+    <div class="universe-stars"></div>
+    <div class="universe-nebula nebula-one"></div>
+    <div class="universe-nebula nebula-two"></div>
+
+    <!-- BINTANG-BINTANG -->
+    <div class="universe-star-field" id="universeStarField"></div>
+
+    <!-- JUDUL -->
+    <div class="universe-heading">
+        <span>OUR LITTLE UNIVERSE</span>
+        <h2>Semesta Kita</h2>
+        <p>
+            Setiap bintang menyimpan bagian kecil
+            dari cerita kita.
+        </p>
+    </div>
+
+    <!-- TENGAH -->
+    <div class="universe-center">
+
+        <div class="center-orbit orbit-one"></div>
+        <div class="center-orbit orbit-two"></div>
+
+        <div class="universe-heart">
+            <span>❤️</span>
+        </div>
+
+        <div class="universe-names">
+            <strong>RINA</strong>
+            <span>❤️</span>
+            <strong>JULIO</strong>
+        </div>
+
+        <small>
+            dua hati, satu semesta
+        </small>
+
+    </div>
+
+
+    <!-- PLANET 1 -->
+    <button
+        class="universe-planet planet-story"
+        data-target="#cerita-kita"
+        data-title="Cerita Kita"
+    >
+        <span class="planet-icon">🪐</span>
+
+        <span class="planet-label">
+            <strong>Cerita Kita</strong>
+            <small>Perjalanan kita</small>
+        </span>
+    </button>
+
+
+    <!-- PLANET 2 -->
+    <button
+        class="universe-planet planet-memory"
+        data-target="#galeri"
+        data-title="Kenangan"
+    >
+        <span class="planet-icon">🌍</span>
+
+        <span class="planet-label">
+            <strong>Kenangan</strong>
+            <small>Momen yang tersimpan</small>
+        </span>
+    </button>
+
+
+    <!-- PLANET 3 -->
+    <button
+        class="universe-planet planet-daily"
+        data-target="#kabar-hari-ini"
+        data-title="Kabar Aku"
+    >
+        <span class="planet-icon">🌙</span>
+
+        <span class="planet-label">
+            <strong>Kabar Aku</strong>
+            <small>Cerita hari ini</small>
+        </span>
+    </button>
+
+
+    <!-- PLANET 4 -->
+    <button
+        class="universe-planet planet-letter"
+        data-target="#surat"
+        data-title="Surat"
+    >
+        <span class="planet-icon">⭐</span>
+
+        <span class="planet-label">
+            <strong>Surat</strong>
+            <small>Dari aku untuk kamu</small>
+        </span>
+    </button>
+
+
+    <!-- PLANET 5 -->
+    <button
+        class="universe-planet planet-future"
+        data-target="#masa-depan"
+        data-title="Masa Depan"
+    >
+        <span class="planet-icon">☄️</span>
+
+        <span class="planet-label">
+            <strong>Masa Depan</strong>
+            <small>Suatu hari nanti</small>
+        </span>
+    </button>
+
+
+    <!-- PETUNJUK -->
+    <div class="universe-instruction">
+        <span>✦</span>
+        Jelajahi semesta kita
+        <span>✦</span>
+    </div>
+
+
+    <!-- ZOOM OVERLAY -->
+    <div
+        class="universe-zoom"
+        id="universeZoom"
+    >
+        <div class="zoom-content">
+
+            <div class="zoom-icon" id="zoomIcon">
+                🪐
+            </div>
+
+            <p>
+                MEMASUKI
+            </p>
+
+            <h3 id="zoomTitle">
+                Cerita Kita
+            </h3>
+
+        </div>
+    </div>
+
+</section>
+
     <!-- SECTION 11: SURPRISE BUTTON & FULLSCREEN OVERLAY -->
     <section class="surprise-section" id="surprise">
         <div class="container text-center">
